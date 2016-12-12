@@ -1,0 +1,11 @@
+h1 Listing comments
+
+table
+  - unless @article.comments.empty?
+    = render 'comments/comments', comments: comments 
+  - else
+  	p no comments
+  	
+= render 'comments/form' 
+
+br
