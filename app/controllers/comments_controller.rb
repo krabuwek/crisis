@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: [:edit, :update, :destroy]
   before_action :set_article, only: [:create]
-  #load_and_authorize_resource
+  load_and_authorize_resource except: :create
 
   # GET /comments
   # GET /comments.json
@@ -13,6 +13,7 @@ class CommentsController < ApplicationController
     @comment = Comment.new comment_params
     @comment.user = current_user
     @comment.article_id = params[:article_id]
+    authorize! :create, @comment
     if @comment.save
       redirect_to @article
     else

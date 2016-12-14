@@ -48,6 +48,9 @@ html
                 = link_to "Sign in", new_user_session_path 
               li  
                 = link_to "Sign_up",  new_user_registration_path
+            li 
+              a 
+                = current_user.email
     .container
       - flash.each do |name, msg|
         = content_tag :div, class: "alert alert-#{ name == :error ? "danger" : "success" } alert-dismissable", role: "alert" do

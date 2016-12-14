@@ -1,0 +1,11 @@
+.articles {
+  .article {
+    width: 354px;
+    display: inline-block;
+    padding-right: 32px;
+  }
+  .article:nth-child(3n){
+    padding-right: 0px;
+    background-color: red;
+  }
+}

@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
-  #load_and_authorize_resource 
+  load_and_authorize_resource except: [:create, :update]
 
 
   # GET /articles
@@ -28,8 +28,10 @@ class ArticlesController < ApplicationController
   def create
     @article = Article.new(article_params)
     @article.user_id = current_user.id
+    authorize! :create, @article
     respond_to do |format|
       if @article.save
+        @article.tags << find_or_create_tags unless params[:tags].empty?
         format.html { redirect_to @article, notice: 'Article was successfully created.' }
         format.json { render :show, status: :created, location: @article }
       else
@@ -42,8 +44,10 @@ class ArticlesController < ApplicationController
   # PATCH/PUT /articles/1
   # PATCH/PUT /articles/1.json
   def update
+    authorize! :make_publication, @article if params[:article][:published] == "1"
     respond_to do |format|
       if @article.update(article_params)
+        @article.tags << find_or_create_tags unless params[:tags].empty?
         format.html { redirect_to @article, notice: 'Article was successfully updated.' }
         format.json { render :show, status: :ok, location: @article }
       else
@@ -67,6 +71,12 @@ class ArticlesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_article
       @article = Article.find(params[:id])
+    end
+
+    def find_or_create_tags 
+      params[:tags].map do |key, value|
+        Tag.find_or_create_by(tag: value)
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

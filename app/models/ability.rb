@@ -33,6 +33,7 @@ class Ability
       article.published?
     end
 
+
     user ||= User.new
 
     unless user.new_record?
@@ -41,11 +42,19 @@ class Ability
       can :create, Mark do |mark|
         mark.article.user != user
       end
-      can :manage, Article, user: user, published: false
+      #can :manage, Article, user: user, published: false
+      can :create, Article do |article|
+        not article.published?
+      end
+
+      cannot :make_publication
+      can [:edit, :destroy, :show, :update], Article, user: user, published: false
       cannot :published, Article
+      #cannot :published, Article
 
       case user.role
         when 'moderator'
+          can :make_publication
           can :manage, Article, published: false
           can :published, Article
           can :manage, Comment

@@ -7,12 +7,17 @@
           li = message
   = f.input :title
   = f.input :content
+  .form-group
+    .col-sm-10
+      label.control-label.text.optional for="tag_list"
+        _List_
+      textarea#article_tags.form-control.text.optional name="tag_list"
   = f.input :published
+
   .form-group
     .col-sm-10
       = f.file_field :illustration
   .form-group
     .col-sm-offset-2.col-sm-10
       = f.submit class: "btn btn-primary"
-  
 

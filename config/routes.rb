@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  
+
   root "articles#index"
   devise_for :users
 
@@ -8,5 +10,7 @@ Rails.application.routes.draw do
   end
 
   resources :users
+
+  post 'comment/:id/response' => "responses#create", as: :comment_responses
 
 end

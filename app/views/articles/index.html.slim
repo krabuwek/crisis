@@ -1,4 +1,22 @@
 h1 Listing articles
+.articles
+  - @articles.each do |article|
+    .article
+      .image
+        = image_tag(article.illustration.thumb.url, class: "img-responsive") unless article.illustration.file.nil?
+      .title
+        = article.title
+      .date
+        = article.created_at
+      .marks
+        = article.marks_count
+      .comments 
+        -article.comments_count
+
+
+
+
+
 
 table
   thead

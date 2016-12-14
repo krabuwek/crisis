@@ -3,8 +3,13 @@ h1 = @article.title
 = image_tag(@article.illustration.url, class: "img-responsive") unless @article.illustration.file.nil?
 h1 content
 p = @article.content
+
 h1 marks
 p = @article.marks_count
+
+h1 tags
+- @article.tags.each do |tag|
+	p = tag.tag
 
 = link_to "like", article_marks_path(@article), method: :post
 = render 'comments/index', comments: @article.comments 
