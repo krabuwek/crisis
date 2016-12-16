@@ -43,14 +43,19 @@ html
             - if current_user
               li
                 = link_to "Log Out", destroy_user_session_path, method: :delete
+              li 
+                a 
+                  = current_user.email
             - else
               li
                 = link_to "Sign in", new_user_session_path 
               li  
                 = link_to "Sign_up",  new_user_registration_path
-            li 
-              a 
-                = current_user.email
+              li
+                = link_to "vk", user_vkontakte_omniauth_authorize_path
+              li
+                = link_to "fb", user_facebook_omniauth_authorize_path
+          
     .container
       - flash.each do |name, msg|
         = content_tag :div, class: "alert alert-#{ name == :error ? "danger" : "success" } alert-dismissable", role: "alert" do

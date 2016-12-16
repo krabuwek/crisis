@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: [:edit, :update, :destroy]
-  before_action :set_article, only: [:create]
+  before_action :set_article, only: [:create, :destroy]
   load_and_authorize_resource except: :create
 
   # GET /comments

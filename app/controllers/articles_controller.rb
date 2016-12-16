@@ -29,6 +29,10 @@ class ArticlesController < ApplicationController
     @article = Article.new(article_params)
     @article.user_id = current_user.id
     authorize! :create, @article
+    # ActiveRecord::Base.transaction do
+    #   @article.save
+    #   @article.tags << find_or_create_tags unless params[:tags].empty?
+    # end
     respond_to do |format|
       if @article.save
         @article.tags << find_or_create_tags unless params[:tags].empty?
@@ -45,9 +49,10 @@ class ArticlesController < ApplicationController
   # PATCH/PUT /articles/1.json
   def update
     authorize! :make_publication, @article if params[:article][:published] == "1"
+
     respond_to do |format|
       if @article.update(article_params)
-        @article.tags << find_or_create_tags unless params[:tags].empty?
+        #@article.tags << find_or_create_tags unless params[:tags].empty?
         format.html { redirect_to @article, notice: 'Article was successfully updated.' }
         format.json { render :show, status: :ok, location: @article }
       else
