@@ -1,4 +1,10 @@
 class Article < ApplicationRecord
+  attr_accessor :tag_list
+
+  validates :content, presence: true, length: { minimum: 1 }
+  validates :title,   presence: true, length: { maximum: 70 }
+
+  
   belongs_to :user
   has_many :comments
   has_many :marks

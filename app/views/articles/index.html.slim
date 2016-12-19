@@ -1,3 +1,9 @@
+h1
+  Last Tags
+ul
+  - @tags.each do |tag|
+    li
+      = link_to_tag tag
 h1 Listing articles
 .articles
   - @articles.each do |article|
@@ -11,13 +17,7 @@ h1 Listing articles
       .marks
         = article.marks_count
       .comments 
-        -article.comments_count
-
-
-
-
-
-
+        = article.comments_count
 table
   thead
     tr

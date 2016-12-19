@@ -6,7 +6,12 @@ class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.json
   def index
-    @articles = Article.all
+    @tags = Tag.last(7)
+    if params[:tag].nil?
+      @articles = Article.all
+    else
+      @articles = Tag.find_by(tag: params[:tag]).articles
+    end
   end
 
   # GET /articles/1
@@ -21,7 +26,9 @@ class ArticlesController < ApplicationController
 
   # GET /articles/1/edit
   def edit
-  end
+    @article.tag_list = @article.tags.map { |i| i.tag }.join(" ")
+    #binding.pry
+   end
 
   # POST /articles
   # POST /articles.json
@@ -29,13 +36,14 @@ class ArticlesController < ApplicationController
     @article = Article.new(article_params)
     @article.user_id = current_user.id
     authorize! :create, @article
+    binding.pry
     # ActiveRecord::Base.transaction do
     #   @article.save
     #   @article.tags << find_or_create_tags unless params[:tags].empty?
     # end
     respond_to do |format|
       if @article.save
-        @article.tags << find_or_create_tags unless params[:tags].empty?
+        @article.tags << find_or_create_tags(params[:tags].map{|k, v| v}) unless params[:tags].empty?
         format.html { redirect_to @article, notice: 'Article was successfully created.' }
         format.json { render :show, status: :created, location: @article }
       else
@@ -49,9 +57,13 @@ class ArticlesController < ApplicationController
   # PATCH/PUT /articles/1.json
   def update
     authorize! :make_publication, @article if params[:article][:published] == "1"
-
+    #binding.pry
     respond_to do |format|
       if @article.update(article_params)
+        old_tags = @article.tags.map { |i| i.tag }
+        new_tags = params[:tags].map { |key, value| value }
+        delete_tags(old_tags - new_tags)
+        @article.tags << find_or_create_tags(new_tags - old_tags)
         #@article.tags << find_or_create_tags unless params[:tags].empty?
         format.html { redirect_to @article, notice: 'Article was successfully updated.' }
         format.json { render :show, status: :ok, location: @article }
@@ -78,9 +90,15 @@ class ArticlesController < ApplicationController
       @article = Article.find(params[:id])
     end
 
-    def find_or_create_tags 
-      params[:tags].map do |key, value|
+    def find_or_create_tags tags
+      tags.map do |value|
         Tag.find_or_create_by(tag: value)
+      end
+    end
+
+    def delete_tags tags
+      tags.each do |tag|
+        Tag.where(tag: tag).destroy_all
       end
     end
 

@@ -1,4 +1,6 @@
 class Comment < ApplicationRecord
+  validates :content, presence: true, length: { minimum: 1 }
+
   belongs_to :article
   belongs_to :user
   has_many :responses
@@ -14,5 +16,4 @@ class Comment < ApplicationRecord
     def update_counter_dec
       self.article.comment_dec
     end
-
 end
