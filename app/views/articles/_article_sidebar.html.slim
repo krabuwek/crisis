@@ -1,0 +1,6 @@
+.sidebar
+	.articles-sidebar
+		h1
+			|Следующие новости:
+		- @articles.each do |article|
+			= render article

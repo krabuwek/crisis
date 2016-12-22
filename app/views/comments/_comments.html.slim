@@ -1,2 +1,14 @@
-- comments.each do |comment|
-	tr = render 'comments/comment', comment: comment
+.comments-header
+	- if @article.comments_count == 0
+		b
+			|Комментариев нет
+	- else
+		.exists-comments
+			.icon
+			b
+				|Комментарии(
+				= @article.comments_count
+				|)
+.comments
+	- comments.each do |comment|
+		= render 'comments/comment', comment: comment

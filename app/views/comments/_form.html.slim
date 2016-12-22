@@ -1,3 +1,9 @@
-= simple_form_for [@article, @article.comments.new] do |f|
-  = f.input :content, label: false, input_html: { rows: '3'}
-  = f.button :submit, 'Добавить комментарий'
+.comment-form
+	.avatar
+		= image_tag current_user.avatar.url, style: "width:86px; height:86px;"
+	.content
+		.name-user
+			= first_and_last_name current_user
+		= simple_form_for [@article, @article.comments.new] do |f|
+		  = f.input :content, label: false, input_html: { rows: '3'}
+		  = f.button :submit, 'Добавить комментарий'

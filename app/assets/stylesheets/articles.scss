@@ -1,11 +1,94 @@
+.articles, .show-article, .articles-sidebar {
+  .icon {
+    background-repeat: no-repeat;
+    background-position: left top;
+  }
+  .marks {
+    .icon {
+      background-image: image-url("Crisis_club_icon_like.png");
+    }
+  }
+}
+.articles .article, .articles-sidebar .article {
+  width: 354px;
+
+  .title {
+      padding-top: 20px;
+  }
+  .footer-article {
+    padding-top: 20px;
+    //float: right;
+    //padding-left: 15px;
+    .date {
+      float: left;
+      //display: inline-block;
+      //text-align: left;
+    }
+
+    .icon {
+      background-size: 20px 20px;
+      width: 19px;
+      height: 19px;
+      float: left;
+      padding-left: 24px;
+    }
+
+    .marks{
+      //display: inline-block;
+      //text-align: right;
+      float: right;
+    }
+
+    .comments {    
+      .icon {
+        background-image: image-url("Crisis_club_icon_comment.png");
+      }
+
+      float: right;
+      text-align: right;
+      padding-right: 10px;
+    }
+
+  }
+}
+.articles-sidebar .article {
+  padding-bottom: 57px;
+}
 .articles {
   .article {
-    width: 354px;
+    
     display: inline-block;
     padding-right: 32px;
+    padding-bottom: 57px;
+
   }
   .article:nth-child(3n){
     padding-right: 0px;
-    background-color: red;
   }
+}
+.show-article{
+  width: 704px;
+  float: left;
+  .footer-article{
+    .like {
+      display: inline-block;
+      margin-left: 5px;
+    }
+    .icon {
+      //background-image: image-url("Crisis_club_icon_like.png"); 
+      background-size: 20px 20px;
+        width: 19px;
+        height: 19px;
+      display: inline-block;
+
+    }
+  }
+  .tags {
+    border-top: 2px solid grey;
+    border-bottom: 2px solid grey;
+  }
+}
+.articles-sidebar {
+  float: right;
+  margin-top: 18px;
 }

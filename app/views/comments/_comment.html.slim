@@ -1,12 +1,24 @@
-td = comment.content
-td = comment.user.email
-td = form_for [comment, comment.responses.new] do |f|
-  = f.text_field :content	
-  = f.submit class: "btn btn-primary"
-- unless comment.responses.empty?
-	table
-		- comment.responses.each do |response|
-			tr
-				td 
-					= response.content
-td = link_to 'Destroy', [comment.article, comment], data: { confirm: 'Are you sure?' }, method: :delete if can?(:destroy, comment)
+.comment
+	.avatar
+		= image_tag current_user.avatar.url, style: "width:86px; height:86px;"
+	.content
+		.header-comment-content
+			.name-user
+				= first_and_last_name comment.user
+			.datetime
+				= created_at_article comment
+		.body
+			= comment.content
+
+/ = comment.content
+/ td = comment.user.email
+/ td = form_for [comment, comment.responses.new] do |f|
+/   = f.text_field :content	
+/   = f.submit class: "btn btn-primary"
+/ - unless comment.responses.empty?
+/ 	table
+/ 		- comment.responses.each do |response|
+/ 			tr
+/ 				td 
+/ 					= response.content
+/ td = link_to 'Destroy', [comment.article, comment], data: { confirm: 'Are you sure?' }, method: :delete if can?(:destroy, comment)

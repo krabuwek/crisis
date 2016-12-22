@@ -24,11 +24,15 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'devise-bootstrap-views'
 gem 'kaminari'
+gem 'rails_admin', '~> 1.0'
 
 #oAuth
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-vkontakte'
+
+#redactor
+gem 'tinymce-rails'
 
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
