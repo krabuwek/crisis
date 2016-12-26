@@ -1,0 +1,11 @@
+.response
+	.avatar
+			= image_tag response.user.avatar.url, style: "width:86px; height:86px;"
+	.content
+		.header-comment-content
+			.name-user
+				= first_and_last_name response.user
+			.datetime
+				= created_at_article response
+		.body
+			= response.content

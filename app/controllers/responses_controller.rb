@@ -1,12 +1,21 @@
 class ResponsesController < ApplicationController
   before_action :set_comment
 
+  def new
+    respond_to do |format|
+      format.js {}
+    end
+  end
+  
   def create
     @response = Response.new(response_params)
     @response.user = current_user
+
     if @response.save
       @comment.responses << @response
-      redirect_to :back
+      respond_to do |format|
+        format.js {}
+      end
     end
   end
 

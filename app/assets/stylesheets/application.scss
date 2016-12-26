@@ -14,6 +14,113 @@
  *= require_self
  *= require devise_bootstrap_views  
  */
+ 
+.clear-fix:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
 .container {
   width: 1127px;
+}
+.header {
+  background-image: image-url("Crisis_club_bkgrnd.jpg");
+  .logo {
+    img {
+      padding-top: 87px;
+      margin: 0 auto;
+      width: 373px;
+      display: block;
+    }
+  }
+  .desc-app {
+    padding-top: 40px;
+    color:white;
+    text-align: center;
+  }
+  .auth-forms {
+    padding-top: 59px;
+    padding-bottom: 50px;
+    clear: both;
+    text-align: center;
+
+    .login-form {
+      background-color: white;
+      //width: 357px;
+      //margin: 0 auto;
+      padding: 25px 35px 25px;
+      display: inline-block;
+
+      .inputs {
+        float: left;
+        margin-right: 15px;
+        input {
+          border: none;
+          border-radius: 0;
+          border-bottom: 1px solid black;
+        }
+      }
+
+      .buttons {
+        float: right;
+        .btn {
+          border-radius: 0;
+          background-color: #117ebd;
+          margin-bottom: 10px;
+          padding: 7px 26px 7px;
+          border:none;
+        }
+        
+        //width: 98px;
+        //float: right;
+        .social-buttons {
+          .vk {
+            img {
+              position: absolute;
+              top: 40%;
+              left: 42%;
+              height: 50%;
+              width: 65%;
+              margin: -15% 0 0 -25%;
+            }
+          }
+          .fb {
+            img {
+              position: absolute;
+              top: 25%;
+              left: 54%;
+              height: 80%;
+              width: 42%;
+              margin: -15% 0 0 -25%;             
+            }
+          }
+          a {
+            display: inline-block;
+            width: 41px;
+            height: 41px;
+            background-color: #117ebd;
+            //line-height: 200px;
+            position: relative;
+
+          }
+          a:last-child {
+            margin-left: 10px;
+          }
+        }
+      }
+      .form-group {
+        background: none;
+      }
+    }
+  }
+}
+.footer {
+  background-color: #384064;
+  .info {
+    position: relative;
+    top: 50%;
+  }
 }

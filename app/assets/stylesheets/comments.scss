@@ -30,6 +30,7 @@
   }
   .content {
     margin-left:110px;
+    min-height: 100px;
   }
   .name-user, .datetime, .avatar, .content {
   //  float: left;
@@ -46,6 +47,7 @@
   }
 }
 .comment-form {
+  clear: left;
   .avatar {
     float: left;
   }

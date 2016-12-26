@@ -1,0 +1,4 @@
+if ($("#response-form").length != 0) {
+	$("#response-form").detach()
+}
+$(".comments #<%= @comment.id %> .responses").prepend('<%= escape_javascript render "form" %>')

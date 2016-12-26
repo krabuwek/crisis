@@ -1,0 +1,9 @@
+#response-form
+	.avatar
+		= image_tag current_user.avatar.url, style: "width:86px; height:86px;"
+	.content
+		.name-user
+			= first_and_last_name current_user
+		= simple_form_for [@comment, @comment.responses.new], remote: true, html:{ "data-turbolinks" => false } do |f|
+		  = f.input :content, label: false, input_html: { rows: '3'}, as: :text
+		  = f.button :submit, 'Отправить'

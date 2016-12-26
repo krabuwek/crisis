@@ -10,12 +10,17 @@ class CommentsController < ApplicationController
   end
 
   def create
+    #binding.pry
     @comment = Comment.new comment_params
     @comment.user = current_user
     @comment.article_id = params[:article_id]
     authorize! :create, @comment
+
     if @comment.save
-      redirect_to @article
+      #redirect_to @article
+      respond_to do |format|
+        format.js {}
+      end
     else
       redirect_to @article, notice: 'Комментарий не сохранён'
     end

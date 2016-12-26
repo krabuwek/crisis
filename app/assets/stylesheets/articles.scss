@@ -92,3 +92,51 @@
   float: right;
   margin-top: 18px;
 }
+.most-popular-tag {
+  // text-align: center;
+  // .center {
+  //   display: inline-block;
+
+  // }
+  color: white;
+  //height: 68px;
+  background-color: #384064;
+  list-style: none;
+
+  a {
+    color: white;
+    padding-left: 30px;
+  }
+  a:hover {
+    color:white;
+  }
+  .news-block {
+    text-align: center;
+    background-color: #117ebd;
+    float: left;
+    margin-right: 20px;
+    span {
+      display: inline-block;
+      padding: 25px;
+    }
+  }
+  .selected-tags {
+    ul {
+      margin-bottom: 0px;
+    }
+    li {
+      float: left;
+      list-style: none;
+      display:block;
+      padding: 25px;
+    }
+    li:last-child {
+      float: none;
+    }
+  }
+}
+  //height 68
+  //.news-block
+    //width 170
+  //.selected-tags
+    //backgroud-color #384064

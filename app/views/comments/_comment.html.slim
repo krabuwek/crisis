@@ -1,6 +1,6 @@
-.comment
+.comment id="#{comment.id}"
 	.avatar
-		= image_tag current_user.avatar.url, style: "width:86px; height:86px;"
+		= image_tag comment.user.avatar.url, style: "width:86px; height:86px;"
 	.content
 		.header-comment-content
 			.name-user
@@ -9,6 +9,21 @@
 				= created_at_article comment
 		.body
 			= comment.content
+		= link_to "Ответить", new_comment_responses_path(comment), remote: true
+	.responses
+		= render comment.responses unless comment.responses.empty?
+	/ .responseco
+	/ 	.avatar
+	/ 			= image_tag current_user.avatar.url, style: "width:86px; height:86px;"
+	/ 	.content
+	/ 		.header-comment-content
+	/ 			.name-user
+	/ 				= first_and_last_name comment.user
+	/ 			.datetime
+	/ 				= created_at_article comment
+	/ 		.body
+	/ 			= comment.content
+
 
 / = comment.content
 / td = comment.user.email
