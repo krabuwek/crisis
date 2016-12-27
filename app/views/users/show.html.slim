@@ -1,31 +1,44 @@
 .page-header
   = link_to users_path, class: 'btn btn-default' do 
     span.glyphicon.glyphicon-list-alt
-    |  Back 
+    |  Назад
   = link_to edit_user_path(@user), class: 'btn btn-primary' do 
     span.glyphicon.glyphicon-pencil
-    |  Edit 
-  h1
-    | Show user
-= image_tag(@user.avatar.thumb.url, class: "img-responsive") unless @user.avatar.file.nil?
-dl.dl-horizontal
-  dt
-    | Id:
-  dd
-    = @user.id
-  dt
-    | Email:
-  dd
-    = @user.email
-  dt
-    | First name:
-  dd
-    = @user.first_name
-  dt
-    | Last name:
-  dd
-    = @user.last_name
-  dt
-    | Phone:
-  dd
-    = @user.phone
+    |  Редактировать
+
+.row
+  .col-md-4
+    - if @user.avatar.file.nil?
+      = image_tag "Crisis_club_icon_profile.png"
+    - else
+      = image_tag(@user.avatar.thumb.url, class: "img-responsive")
+  .col-md-8
+    dl.dl-horizontal
+      dt
+        | Email:
+      dd
+        = @user.email
+      dt
+        | Имя:
+      dd
+        = @user.first_name
+      dt
+        | Фамилия:
+      dd
+        = @user.last_name
+      dt
+        | Телефон:
+      dd
+        = @user.phone.nil? ? "не указан" : @user.phone
+      dt
+        | Место работы
+      dd
+        = @user.company.nil? ? "не указано" :  @user.company
+      dt
+        | Должность
+      dd
+        = @user.position.nil? ? "не указана" : @user.position
+      dt
+        | Бизнес достижения
+      dd
+        = @user.business_achievements.nil? ? "пусто" : @user.business_achievements

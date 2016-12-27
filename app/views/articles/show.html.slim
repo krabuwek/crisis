@@ -1,38 +1,46 @@
 p#notice = notice
-	
 .show-article
 	h1 = @article.title
 	.created-at
 		= created_at_article @article
-
 	= image_tag(@article.illustration.url, class: "img-responsive") unless @article.illustration.file.nil?
 	.content
 		= @article.content.html_safe
+	#fb-root
+	javascript:
+		//(function(d, s, id) {
+		 // var js, fjs = d.getElementsByTagName(s)[0];
+		//  if (d.getElementById(id)) return;
+		//  js = d.createElement(s); js.id = id;
+		//  js.src = "//connect.facebook.net/ru_RU/sdk.js#xfbml=1&version=v2.8&appId=644481139092321";
+		//  fjs.parentNode.insertBefore(js, fjs);
+		//}(document, 'script', 'facebook-jssdk'));
 	.footer-article
+		/#fb-share-button data-href="#{root_path}" data-layout="button" data-size="small" data-mobile-iframe="true"
+			/a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse"
+			/	|Поделиться
 		= link_to article_marks_path(@article), method: :post do
 			.marks
-				.icon
 				.like
+					.icon
 					/= link_to "Мне нравится", article_marks_path(@article), method: :post, class: ""
-					|Мне нравится
+					span Мне нравится
 		javascript:
-			$(".like").append(VK.Share.button(false, {
-				type: "round", 
-				text: "jnfds",
-				title: "bla bla bla"
-			}));
-			document.write(VK.Share.button(false,{type: "round", text: "Сохранить", title:"dsadas", description: 'Это мой собственный сайт, я его очень долго делал'}));
+			//$(".like").append(VK.Share.button(false, {
+			//	type: "round", 
+			//	text: "jnfds",
+			//	title: "bla bla bla"
+			//}));
+			// document.write(VK.Share.button(false,{type: "round", text: "Сохранить", title:"dsadas", description: 'Это мой собственный сайт, я его очень долго делал'}));
 			//$(".like").append(VK.Share.button({
 			//	url: 'localhost:3000/articles',
   		//	title: 'Awesome site',
   		//	description: 'It\'s the most awesome site ever',
 			//}));		
-		|Поделиться 
 	.tags
 		|Теги: 
 		- @article.tags.each do |tag|
-			= link_to_tag tag
-			|_
+			= link_to_tag tag		
 	= render 'comments/index', comments: @article.comments 
 = render "article_sidebar"
 

@@ -99,14 +99,8 @@ ActiveRecord::Schema.define(version: 20161215104438) do
     t.string   "position"
     t.text     "business_achievements"
     t.string   "avatar"
-    t.string   "confirmation_token"
-    t.datetime "confirmed_at"
-    t.         "datetime"
-    t.string   "unconfirmed_email"
-    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-    t.index [nil], name: "index_users_on_unlock_token", unique: true
   end
 
 end

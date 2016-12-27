@@ -1,5 +1,5 @@
 div id="add-email" class="container"
-  h1 Add Email
+  h1 Дoбавьте email
   = form_for(current_user, :as => 'user', :url => finish_signup_path(current_user), :html => { role: 'form'}) do |f|
     - if @show_errors && current_user.errors.any?
       div id="error_explanation">
@@ -9,8 +9,8 @@ div id="add-email" class="container"
     div class="form-group"
       = f.label :email
       div class="controls"
-        = f.text_field :email, :autofocus => true, :value => '', class: 'form-control input-lg', placeholder: 'Example: email@me.com'
+        = f.text_field :email, :autofocus => true, :value => '', class: 'form-control input-lg', placeholder: 'Например: email@me.com'
         p class="help-block"
-          Please confirm your email address. No spam.
+          |Пожалуйста, подтвердите свой email.
     div class="actions"
       = f.submit 'Continue', :class => 'btn btn-primary'

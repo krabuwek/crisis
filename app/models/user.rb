@@ -3,13 +3,13 @@ class User < ApplicationRecord
   TEMP_EMAIL_REGEX = /\Achange@me/
 
 
-  validates_format_of :email, :without => TEMP_EMAIL_REGEX, on: :update
+  #validates_format_of :email, :without => TEMP_EMAIL_REGEX, on: :update
 
   # Include default devise modules. Others available are:
   # , :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
-         :omniauthable, :confirmable
+         :omniauthable
 
   has_many :articles
   has_many :comments
@@ -46,7 +46,7 @@ class User < ApplicationRecord
           email: email ? email : "#{TEMP_EMAIL_PREFIX}-#{auth.uid}-#{auth.provider}.com",
           password: Devise.friendly_token[0,20]
         )
-        user.skip_confirmation!
+        #user.skip_confirmation!
         user.save!
       end
     end

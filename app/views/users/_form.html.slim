@@ -23,6 +23,20 @@
     .col-sm-10
       = f.text_field :phone, class: "form-control"
   .form-group
+    = f.label :company, class: "col-sm-2 control-label"
+    .col-sm-10
+      = f.text_field :company, class: "form-control"
+  .form-group
+    = f.label :position, class: "col-sm-2 control-label"
+    .col-sm-10
+      = f.text_field :position, class: "form-control"
+  .form-group
+    = f.label :business_achievements, class: "col-sm-2 control-label"
+    .col-sm-10
+      = f.text_area :business_achievements, class: "form-control"
+  .form-group
+    .col-sm-2.control-label
+      |Avatar
     .col-sm-10
       = f.file_field :avatar
   .form-group

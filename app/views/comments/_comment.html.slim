@@ -9,7 +9,7 @@
 				= created_at_article comment
 		.body
 			= comment.content
-		= link_to "Ответить", new_comment_responses_path(comment), remote: true
+		= link_to "Ответить", new_comment_responses_path(comment), remote: true if can? :create, Comment
 	.responses
 		= render comment.responses unless comment.responses.empty?
 	/ .responseco

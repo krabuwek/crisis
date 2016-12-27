@@ -1,6 +1,9 @@
 #response-form
 	.avatar
-		= image_tag current_user.avatar.url, style: "width:86px; height:86px;"
+		- if image_tag current_user.avatar.nil?
+			= image_tag "Crisis_club_icon_profile.png", style: "width:86px; height:86px;"
+		- else 
+			= image_tag current_user.avatar.url, style: "width:86px; height:86px;"
 	.content
 		.name-user
 			= first_and_last_name current_user

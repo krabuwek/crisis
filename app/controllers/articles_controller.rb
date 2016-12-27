@@ -6,7 +6,7 @@ class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.json
   def index
-    @tags = Tag.last(7)
+    #@tags = Tag.last(7)
     if params[:tag].nil?
       @articles = Article.all
     else
@@ -37,7 +37,7 @@ class ArticlesController < ApplicationController
     @article = Article.new(article_params)
     @article.user_id = current_user.id
     authorize! :create, @article
-    binding.pry
+    #binding.pry
     # ActiveRecord::Base.transaction do
     #   @article.save
     #   @article.tags << find_or_create_tags unless params[:tags].empty?

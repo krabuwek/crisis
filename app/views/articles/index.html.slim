@@ -1,9 +1,11 @@
-
-h1 ddasdsad
 .articles
   - @articles.each do |article|
     /- binding.pry
     = render article
+.container.add-articles-index.text-center
+  = link_to root_path do 
+    #add-articles-index
+      |Показать  ещё
 
     / .article
     /   .image

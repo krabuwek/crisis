@@ -1,3 +1,7 @@
+
+body {
+  padding-top: 0px !important;
+}
 .articles, .show-article, .articles-sidebar {
   .icon {
     background-repeat: no-repeat;
@@ -9,11 +13,16 @@
     }
   }
 }
+
+.articles {
+  margin-top: 40px;
+}
+
 .articles .article, .articles-sidebar .article {
   width: 354px;
 
   .title {
-      padding-top: 20px;
+    padding-top: 20px;
   }
   .footer-article {
     padding-top: 20px;
@@ -69,30 +78,51 @@
 .show-article{
   width: 704px;
   float: left;
+  img {
+    margin-bottom: 30px;
+  }
   .footer-article{
+    margin-top: 15px;
+    margin-bottom: 15px;
     .like {
       display: inline-block;
-      margin-left: 5px;
+      //margin-left: 5px;
+      //font-size: 19px;
+      /*span {
+        position: relative;
+        top: 30%;
+      }*/
     }
     .icon {
       //background-image: image-url("Crisis_club_icon_like.png"); 
-      background-size: 20px 20px;
-        width: 19px;
-        height: 19px;
+      background-size: 19px 19px;
+      width: 19px;
+      height: 19px;
+      float: left;
+      margin-right: 5px;
       display: inline-block;
 
     }
   }
   .tags {
-    border-top: 2px solid grey;
-    border-bottom: 2px solid grey;
+    border-top: 1px solid #bdbdbd;
+    border-bottom: 1px solid #bdbdbd;
+    color: #bdbdbd;
+    padding-top: 26px;
+    padding-bottom: 26px; 
+    margin-bottom: 30px;
+    a {
+      color: #bdbdbd;
+      padding-left: 5px;
+      display: inline-block;
+    }
   }
 }
 .articles-sidebar {
   float: right;
   margin-top: 18px;
 }
-.most-popular-tag {
+.most-popular-tags {
   // text-align: center;
   // .center {
   //   display: inline-block;
@@ -134,6 +164,17 @@
       float: none;
     }
   }
+}
+.add-articles-index {
+  #add-articles-index {
+    color: white;
+    display: inline-block;
+    font-size: 20px;
+    text-align: center;
+    padding: 10px 112px 10px;
+    background-color:#384064; 
+  }
+  margin-bottom: 30px;
 }
   //height 68
   //.news-block

@@ -1,3 +1,4 @@
 - unless @article.comments.empty?
     = render 'comments/comments', comments: comments 
-= render 'comments/form' 
+
+= render 'comments/form' if can? :create, Comment

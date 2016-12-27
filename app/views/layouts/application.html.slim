@@ -4,7 +4,7 @@ html
     meta charset="utf-8"
     meta http-equiv="X-UA-Compatible" content="IE=edge"
     meta name="viewport" content="width=device-width, initial-scale=1"
-    meta name="description" content="djsbdjasb"
+    meta name="description" content=""
     meta name="author" content=""
     title
       | Starter Template for Bootstrap
@@ -16,7 +16,7 @@ html
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   body
-    nav.navbar.navbar-inverse.navbar-fixed-top role="navigation"
+    /nav.navbar.navbar-inverse.navbar-fixed-top role="navigation"
       .container
         .navbar-header
           button.navbar-toggle.collapsed type="button" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"
@@ -57,57 +57,61 @@ html
               li
                 = link_to "fb", user_facebook_omniauth_authorize_path
     .header
-      .logo
-         = image_tag("Crisis_club_logo_2.png")
-      .desc-app
-        p
-          |CRISIS.CLUB -- социальная сеть, объеденяющая антикризисных менеджеров России и СНГ
-          br
-          |Находите коллег, делитесь опытом, организовывайте встречи, занимайтесь совместной работой.
-      .auth-forms
-        .login-form
-          //fix
-          - @user = User.new
-          = form_for(@user, as: @user, url: session_path(@user), html: { role: "form" }) do |f| 
-            .inputs
-              .form-group
-                /= f.label :email
-                = f.email_field :email, autofocus: true, class: "form-control", placeholder: "Email"
-              .form-group
-                /= f.label :password 
-                = f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "Пароль"
-            
-                /ширина 357
-                /высота 129
-            .buttons
-              = f.submit  "Войти", class: "btn btn-primary"
-              .social-buttons
-                = link_to root_path, class:"fb" do
-                  = image_tag("Crisis_club_news_icon_fb.png")
-                = link_to root_path, class:"vk" do
-                  = image_tag("Crisis_club_news_icon_vk.png")
-                
-
-
-            /height 87
-            /width 98
-            /backgroud-color #117ebd
-            /вйоти
-            /fb
-            /vk
+      - if current_user
+        .container
+          .row.auth-true
+            .col-md-6.text-left
+              .logo
+                = image_tag("Crisis_club_logo_2.png")
+            .col-md-6.text-right
+              .row.info-user
+                .col-md-10
+                  .row
+                    .col-md-12.name
+                      = first_and_last_name current_user
+                  .row.settings
+                    .col-md-10
+                      = link_to "Настройки", user_path(current_user)
+                    .col-md-2   
+                      = link_to "Выйти", destroy_user_session_path, method: :delete
+                .col-md-2.text-left
+                  = image_tag("Crisis_club_icon_profile.png")
+      - else
+        .logo
+          = image_tag("Crisis_club_logo_2.png")
+        .desc-app
+          p
+            |CRISIS.CLUB -- социальная сеть, объеденяющая антикризисных менеджеров России и СНГ
+            br
+            |Находите коллег, делитесь опытом, организовывайте встречи, занимайтесь совместной работой.
+        .auth-forms
+          .login-form
+            - @user = User.new
+            = form_for(@user, as: @user, url: session_path(@user), html: { role: "form" }) do |f| 
+              .inputs
+                .form-group
+                  = f.email_field :email, autofocus: true, class: "form-control", placeholder: "Email"
+                .form-group 
+                  = f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "Пароль"
+              .buttons
+                = f.submit  "Войти", class: "btn btn-primary"
+                .social-buttons
+                  = link_to user_facebook_omniauth_authorize_path, class:"fb" do
+                    = image_tag("Crisis_club_news_icon_fb.png")
+                  = link_to user_vkontakte_omniauth_authorize_path, class:"vk" do
+                    = image_tag("Crisis_club_news_icon_vk.png")
             .button
-              /height 41
-    .most-popular-tag.clear-fix
-      .container
-        .news-block
-          span
-            |Новости
-            /width 170
-        .selected-tags
-          ul
-            - @tags.each do |tag|
-              li
-                = link_to_tag tag
+    / - unless @tags.nil?          
+    /   .most-popular-tags.clear-fix
+    /     .container
+    /       .news-block
+    /         span
+    /           |Новости              
+    /       .selected-tags
+    /         ul
+    /           - @tags.each do |tag|
+    /             li
+    /               = link_to_tag tag
     .container
       - flash.each do |name, msg|
         = content_tag :div, class: "alert alert-#{ name == :error ? "danger" : "success" } alert-dismissable", role: "alert" do
@@ -121,17 +125,6 @@ html
     .footer
       .container
         .row
-          / .col-xs-12.col-sm-6.col-md-6.col-lg-6
-          /   .logo
-          /     = image_tag("Crisis_club_footer_logo.png")
-          / .col-xs-12.col-sm-6.col-md-6.col-lg-6 
-          /   .info
-          /     = link_to "About", root_path
-          /     = link_to "Privacy"
-          /     = link_to "Contact us"
-          / .col-xs-12.col-sm-6.col-md-6.col-lg-6 
-          /   .copyright
-          /     |Copyright © 2017 Crisis.Club
           .col-md-4.col-sm-12.col-xs-12.my-col.text-center
             .logo
               = image_tag("Crisis_club_footer_logo.png")

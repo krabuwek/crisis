@@ -66,7 +66,7 @@ class UsersController < ApplicationController
     # authorize! :update, @user 
     if request.patch? && params[:user] #&& params[:user][:email]
       if @user.update(user_params)
-        @user.skip_reconfirmation!
+        #@user.skip_reconfirmation!
         sign_in(@user, :bypass => true)
         redirect_to @user, notice: 'Your profile was successfully updated.'
       else
@@ -83,6 +83,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:email, :first_name, :last_name, :phone, :avatar)
+      params.require(:user).permit(:email, :first_name, :last_name, :phone, :avatar, :company, :position, :business_achievements, :dob)
     end
 end
