@@ -1,7 +1,7 @@
-.articles
-  - @articles.each do |article|
-    /- binding.pry
-    = render article
+.articles.clear-fix
+  - @articles.each_with_index do |article, i|
+    .col-md-4
+        = render article
 .container.add-articles-index.text-center
   = link_to root_path do 
     #add-articles-index

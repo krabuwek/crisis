@@ -37,6 +37,7 @@ class ArticlesController < ApplicationController
     @article = Article.new(article_params)
     @article.user_id = current_user.id
     authorize! :create, @article
+    @article.published = true
     #binding.pry
     # ActiveRecord::Base.transaction do
     #   @article.save
