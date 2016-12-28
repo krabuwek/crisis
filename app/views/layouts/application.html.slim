@@ -77,43 +77,63 @@ html
                 .col-md-2.text-left
                   = image_tag("Crisis_club_icon_profile.png")
       - else
-        .logo
-          = image_tag("Crisis_club_logo_2.png")
-        .desc-app
-          p
-            |CRISIS.CLUB -- социальная сеть, объеденяющая антикризисных менеджеров России и СНГ
-            br
-            |Находите коллег, делитесь опытом, организовывайте встречи, занимайтесь совместной работой.
-        .auth-forms
-          .login-form
-            - @user = User.new
-            = form_for(@user, as: @user, url: session_path(@user), html: { role: "form" }) do |f| 
-              .inputs
-                .form-group
-                  = f.email_field :email, autofocus: true, class: "form-control", placeholder: "Email"
-                .form-group 
-                  = f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "Пароль"
-              .buttons
-                = f.submit  "Войти", class: "btn btn-primary"
-                .social-buttons
-                  = link_to user_facebook_omniauth_authorize_path, class:"fb" do
-                    = image_tag("Crisis_club_news_icon_fb.png")
-                  = link_to user_vkontakte_omniauth_authorize_path, class:"vk" do
-                    = image_tag("Crisis_club_news_icon_vk.png")
-            .button
-    / - unless @tags.nil?          
-    /   .most-popular-tags.clear-fix
-    /     .container
-    /       .news-block
-    /         span
-    /           |Новости              
-    /       .selected-tags
-    /         ul
-    /           - @tags.each do |tag|
-    /             li
-    /               = link_to_tag tag
-    .container
-      - flash.each do |name, msg|
+        .container
+          .row.auth-true.login-form
+            .col-md-8.text-left
+              .logo
+                = image_tag("Crisis_club_logo_2.png")
+            .col-md-4.text-right
+              - @user = User.new
+              = form_for(@user, as: @user, url: session_path(@user), html: { role: "form" }) do |f| 
+                .row.auth-inputs
+                  .col-md-4.text-center
+                    = f.email_field :email, autofocus: true, class: "form-control", placeholder: "Email"
+                  .col-md-4.text-center
+                    = f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "Пароль"
+                  .col-md-4.text-left
+                    = f.submit  "Войти", class: "btn btn-primary"
+                .row
+                  .col-md-6#add-registration
+                    span.border-bottom-dashed
+                      | или зарегестрируйтесь
+                  .col-md-6.text-left
+                    span.border-bottom-dashed
+                      | забыли пароль?
+          #registration style="display:none"
+            .row
+              .col-md-12.text-center.register
+                |Регистрация
+            .row.register-form
+              .col-md-2
+              .col-md-8
+                = form_for(@user, :as => @user, :url => registration_path(@user), html: { role: "form" }) do |f|
+                  .row
+                    .col-md-3
+                      = f.text_field :first_name, autofocus: true, class: "form-control", placeholder: "Имя"
+                    .col-md-3
+                      = f.text_field :last_name, class: "form-control", placeholder: "Фамилия"
+                    .col-md-3
+                      = f.email_field :email, class: "form-control", placeholder: "Email"
+                    .col-md-3
+                      = f.submit  "Зарегестрироваться", class: "btn btn-primary"
+                  .row
+                    .col-md-4
+                      = f.password_field :password, class: "form-control", placeholder: "Пароль"
+                    .col-md-4
+                      = f.password_field :password_confirmation, class: "form-control", placeholder: "Подтвердите пароль"
+                    .col-md-4
+                      .row
+                        .col-md-6.text-right style="padding:0;"
+                          |С помошью соцсетей:
+                        .col-md-3 style="padding:2;"
+                          = link_to user_facebook_omniauth_authorize_path, class:"fb" do
+                            = image_tag("Crisis_club_news_icon_fb.png")
+                        .col-md-3 style="padding:0;"
+                          = link_to user_vkontakte_omniauth_authorize_path, class:"vk" do
+                            = image_tag("Crisis_club_news_icon_vk.png")
+              .col-md-2
+    .container.body-container
+      /- flash.each do |name, msg|
         = content_tag :div, class: "alert alert-#{ name == :error ? "danger" : "success" } alert-dismissable", role: "alert" do
           button.close type="button" data-dismiss="alert"
             span aria-hidden="true"

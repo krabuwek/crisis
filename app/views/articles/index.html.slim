@@ -1,51 +1,9 @@
-.articles.clear-fix
-  - @articles.each_with_index do |article, i|
-    .col-md-4
-        = render article
-.container.add-articles-index.text-center
-  = link_to root_path do 
-    #add-articles-index
-      |Показать  ещё
-
-    / .article
-    /   .image
-    /     = image_tag(article.illustration.thumb.url, class: "img-responsive") unless article.illustration.file.nil?
-    /   .title
-    /     = link_to "#{article.title}", article_path(article)
-    /   .footer-article
-    /     .date
-    /       = article.created_at.strftime("%d.%m.%Y")
-    /     .marks 
-    /       .icon         
-    /       = article.marks_count
-    /     .comments
-    /       .icon 
-    /       = article.comments_count
-/ table
-/   thead
-/     tr
-/       th title
-/       th content
-/       th marks count
-/       th comments count
-/       th published?
-/       th
-/       th
-/       th
-
-/   tbody
-/     - @articles.each do |article|
-/       tr
-/         td = article.title
-/         td = article.content
-/         td = article.marks_count
-/         td = article.comments_count
-/         td = article.published
-/         td = link_to 'Show', article
-/         td = link_to 'Edit', edit_article_path(article)
-/         td = link_to 'Destroy', article, data: { confirm: 'Are you sure?' }, method: :delete
-
-
-/ br
-
-/= link_to 'New Article', new_article_path
+- if @message
+    h1 
+        = @message
+- else    
+    .articles.clear-fix
+        = render partial: "articles"
+    .container.add-articles-index.text-center
+        #add-articles-index
+            = link_to_next_page @articles,"Показать ещё",  remote: true

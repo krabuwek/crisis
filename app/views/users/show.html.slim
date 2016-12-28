@@ -1,11 +1,5 @@
 .page-header
-  = link_to users_path, class: 'btn btn-default' do 
-    span.glyphicon.glyphicon-list-alt
-    |  Назад
-  = link_to edit_user_path(@user), class: 'btn btn-primary' do 
-    span.glyphicon.glyphicon-pencil
-    |  Редактировать
-
+  
 .row
   .col-md-4
     - if @user.avatar.file.nil?
@@ -42,3 +36,16 @@
         | Бизнес достижения
       dd
         = @user.business_achievements.nil? ? "пусто" : @user.business_achievements
+.edit-user-plz
+  .row
+    = link_to edit_user_path(@user), class: 'btn btn-primary' do 
+      span.glyphicon.glyphicon-pencil
+      |  Редактировать
+  .row
+    = link_to new_article_path,  class: 'btn btn-primary' do 
+      span.glyphicon
+      |  Добавить новость
+  .row
+    = link_to articles_path(my_article: true),  class: 'btn btn-primary' do
+      span.glyphicon
+      |  Просмотр предложенных новостей 

@@ -6,11 +6,19 @@ class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.json
   def index
-    #@tags = Tag.last(7)
     if params[:tag].nil?
-      @articles = Article.all
+      if params[:my_article]
+        #current_user.articles.not_published
+        if current_user.articles.published.empty?
+          @message = "Вы не предложили ни одной новости или их уже опубликовали"
+        else
+          @articles = current_user.articles.published
+        end
+      else  
+        @articles = Article.published.page params[:page]
+      end
     else
-      @articles = Tag.find_by(tag: params[:tag]).articles
+      @articles = Tag.find_by(tag: params[:tag]).articles.page params[:pages]
     end
   end
 

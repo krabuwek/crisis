@@ -1,0 +1,2 @@
+ $(".articles").append("<%= escape_javascript(render partial: 'articles') %>");
+ $("#add-articles-index").html("<%= escape_javascript(link_to_next_page @articles, 'Показать ещё', remote: true) %>");

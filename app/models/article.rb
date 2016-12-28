@@ -4,7 +4,12 @@ class Article < ApplicationRecord
   validates :content, presence: true, length: { minimum: 1 }
   validates :title,   presence: true, length: { maximum: 70 }
 
-  
+  scope :published, -> { where(published: true) }
+  scope :not_published, -> { where(published: false) }
+  default_scope { order(created_at: :desc) }
+
+  paginates_per 9
+
   belongs_to :user
   has_many :comments
   has_many :marks

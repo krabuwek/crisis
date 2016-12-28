@@ -29,7 +29,94 @@
 .container {
   width: 1127px;
 }
+.body-container {
+  min-height: 600px;
+}
 .header {
+  #add-registration {
+    cursor:pointer;
+  }
+  .register {
+    color:white;
+  }
+  .register-form > .col-md-8 {
+    background-color: white;
+    padding: 15px;
+  }
+  .register-form {
+      margin-top: 20px;
+      padding-bottom: 41px;
+      //background: white;
+      input {
+        border-radius: 0px;
+        border:none;
+        text-align: center;
+      }
+      input[type=text], input[type=email], input[type=password] {
+        border-bottom:2px solid #979ba6;
+      }
+      .vk, .fb {
+        width: 41px;
+        height: 41px;
+        display: block;
+        background-color: #127ebe;
+      }
+      .fb {
+        img {
+          position: relative;
+          top: 25%;
+          left: 54%;
+          height: 80%;
+          width: 42%;
+          margin: -15% 0 0 -25%;   
+        }
+      }
+      .vk {
+        img {
+          position: relative;
+          top: 33%;
+          left: 39%;
+          height: 64%;
+          width: 70%;
+          margin: -15% 0 0 -25%;
+        }
+      }
+      img {
+
+      }
+   
+      .col-md-8 {
+        .row:last-child {
+          margin-top: 5px;
+          input {
+            margin-top: 5px;
+          }
+        }
+      }
+  }
+  
+  .border-bottom-dashed {
+    border-bottom: 1px dashed #8091d5;
+    color: #8091d5;
+  }
+  .auth-inputs {
+    margin-bottom: 15px;
+  }
+  .login-form {
+    input {
+      text-align: center;
+      border: none;
+      border-radius: 0;
+      border-bottom: 2px solid white;
+      color:white;
+    }
+    input[type=email], input[type=password] {
+      background: none;
+    }
+    input[type=submit] {
+      border:2px solid white;
+    }
+  }
   background-image: image-url("Crisis_club_bkgrnd.jpg");
   .logo {
     img {
