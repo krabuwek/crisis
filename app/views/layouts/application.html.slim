@@ -4,8 +4,15 @@ html
     meta charset="utf-8"
     meta http-equiv="X-UA-Compatible" content="IE=edge"
     meta name="viewport" content="width=device-width, initial-scale=1"
-    meta name="description" content=""
-    meta name="author" content=""
+    /meta name="description" content=""
+    /meta name="author" content=""
+    meta property="og:title" content="Заголовок" 
+    meta property="og:description" content="Описание" 
+    meta property="og:url" content="vk.com" 
+    meta property="og:image" content="Ссылка на картинку" 
+
+    meta name="title" content="Заголовок" 
+    meta name="description" content="Описание" 
     title
       | Starter Template for Bootstrap
     /! HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries
@@ -132,6 +139,31 @@ html
                           = link_to user_vkontakte_omniauth_authorize_path, class:"vk" do
                             = image_tag("Crisis_club_news_icon_vk.png")
               .col-md-2
+    .most-popular-tags
+      nav.navbar.navbar-inverse role="navigation"
+        .container
+          .navbar-header
+            button.navbar-toggle.collapsed type="button" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"
+              span.sr-only
+                | Toggle navigation
+              span.icon-bar
+              span.icon-bar
+              span.icon-bar
+            = link_to "Новости", root_path, class: "navbar-brand text-center"
+          #navbar.collapse.navbar-collapse
+            ul.nav.navbar-nav
+              - @tags.each do |tag|
+                li
+                  = link_to_tag tag
+    /.container.tags
+      .title-tag
+        = link_to root_path do
+          | Новости
+      ul.nav.navbar-nav
+        - @tags.each do |tag|
+          li
+            = link_to_tag tag 
+
     .container.body-container
       /- flash.each do |name, msg|
         = content_tag :div, class: "alert alert-#{ name == :error ? "danger" : "success" } alert-dismissable", role: "alert" do

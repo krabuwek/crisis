@@ -3,10 +3,12 @@
 	h1 = @article.title
 	.created-at
 		= created_at_article @article
+		.shared-top
+			= render partial:"shared_buttons"
 	= image_tag(@article.illustration.url, class: "img-responsive") unless @article.illustration.file.nil?
 	.content
 		= @article.content.html_safe
-	#fb-root
+	/#fb-root
 	javascript:
 		//(function(d, s, id) {
 		 // var js, fjs = d.getElementsByTagName(s)[0];
@@ -25,6 +27,7 @@
 					.icon
 					/= link_to "Мне нравится", article_marks_path(@article), method: :post, class: ""
 					span Мне нравится
+		= render partial: "shared_buttons"
 		javascript:
 			//$(".like").append(VK.Share.button(false, {
 			//	type: "round", 

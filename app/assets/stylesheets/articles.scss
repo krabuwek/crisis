@@ -80,6 +80,18 @@ body {
 .show-article{
   width: 704px;
   float: left;
+  .shared-top {
+    float: right;
+  }
+  .shared-button {
+    .shared-title {
+      position: relative;
+      top: 3px;
+      float: left;
+      margin-right: 2px;
+      color: #46b0ef;
+    }
+  }
   img {
     margin-bottom: 30px;
   }
@@ -88,12 +100,20 @@ body {
     margin-bottom: 15px;
     .like {
       display: inline-block;
+      a {
+        color: #46b0ef;
+      }
       //margin-left: 5px;
       //font-size: 19px;
       /*span {
         position: relative;
         top: 30%;
       }*/
+    }
+    .marks {
+      margin-top: 2px;
+      float: left;
+      margin-right: 22px;
     }
     .icon {
       //background-image: image-url("Crisis_club_icon_like.png"); 
@@ -125,11 +145,18 @@ body {
   margin-top: 18px;
 }
 .most-popular-tags {
-  // text-align: center;
-  // .center {
-  //   display: inline-block;
-
-  // }
+  .navbar-inverse .navbar-nav > li > a {
+    color: white;
+  }
+  .navbar-inverse .navbar-brand {
+    color:white;
+  }
+  nav {
+    border-radius: 0;
+    border:none;
+    border-top:2px solid #adb6dd;
+    background-color: #384064;
+  }
   color: white;
   //height: 68px;
   background-color: #384064;
@@ -168,6 +195,9 @@ body {
   }
 }
 .add-articles-index {
+  a, a:hover {
+    color: white;
+  }
   #add-articles-index {
     color: white;
     display: inline-block;

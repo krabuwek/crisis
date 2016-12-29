@@ -1,2 +1,6 @@
- $(".articles").append("<%= escape_javascript(render partial: 'articles') %>");
- $("#add-articles-index").html("<%= escape_javascript(link_to_next_page @articles, 'Показать ещё', remote: true) %>");
+$(".articles").append("<%= escape_javascript(render partial: 'articles') %>");
+<% unless (link_to_next_page @articles, 'Показать ещё', remote: true).nil? %>
+	$(".add-articles-index").html("<div id='add-articles-index'><%= escape_javascript(link_to_next_page @articles, 'Показать ещё', remote: true) %></div>");
+<% else %>
+	$(".add-articles-index").detach()	
+<% end %>
