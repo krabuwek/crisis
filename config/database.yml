@@ -21,6 +21,10 @@ test:
   database: db/test.sqlite3
 
 production:
+  adapter: postgresql
+  encoding: unicode
+  database: crisis_club
+  pool: 5
   host: localhost
   username: club
   password: crisis1237
