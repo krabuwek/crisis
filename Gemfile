@@ -26,6 +26,13 @@ gem 'mini_magick'
 gem 'devise-bootstrap-views'
 gem 'kaminari'
 gem 'rails_admin', '~> 1.0'
+group :development do
+    gem 'capistrano',         require: false
+    gem 'capistrano-rvm',     require: false
+    gem 'capistrano-rails',   require: false
+    gem 'capistrano-bundler', require: false
+    gem 'capistrano3-puma',   require: false
+end
 
 #oAuth
 gem 'omniauth'
