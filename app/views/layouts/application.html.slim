@@ -152,9 +152,10 @@ html
             = link_to "Новости", root_path, class: "navbar-brand text-center"
           #navbar.collapse.navbar-collapse
             ul.nav.navbar-nav
-              - @tags.each do |tag|
-                li
-                  = link_to_tag tag
+              - unless @tags.nil?
+                - @tags.each do |tag|
+                  li
+                    = link_to_tag tag
     /.container.tags
       .title-tag
         = link_to root_path do
