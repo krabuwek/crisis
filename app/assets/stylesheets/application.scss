@@ -26,6 +26,10 @@
 // body > .container, .footer > .container, .most-popular-tags > .container {
 //   width: 1127px;
 // }
+body {
+  font-size: 13px;
+  font-family: "Open Sans";
+}
 .container {
   width: 1127px;
 }
@@ -97,7 +101,10 @@
   
   .border-bottom-dashed {
     border-bottom: 1px dashed #8091d5;
-    color: #8091d5;
+  }
+  .border-bottom-dashed, .border-bottom-dashed a, .border-bottom-dashed a:hover {
+    color: #8091d5; 
+    text-decoration: none;
   }
   .auth-inputs {
     margin-bottom: 15px;
@@ -121,8 +128,9 @@
   .logo {
     img {
       padding-top: 87px;
-      margin: 0 auto;
-      width: 373px;
+      // margin: 0 auto;
+      // width: 373px;
+      height: 68px;
       display: block;
     }
   }
@@ -133,9 +141,9 @@
     .logo {
       img {
         padding-top: 0px;
-        position: relative;
-        left: -13%;
-        top: -13px;
+        // position: relative;
+        // left: -13%;
+        // top: -13px;
       }
     }
     .info-user {
@@ -280,5 +288,27 @@
   }
   .copyright {
     color: #656e92
+  }
+}
+.most-popular-tags {
+  .news-title {
+    background-image: image-url("Crisis_club_news_backgroud.png");
+    float: left;
+    color: white;
+    padding: 25px
+  }
+  .tags {
+    height: 66px;
+    ul {
+      list-style: none;
+      white-space: nowrap;
+      overflow: auto;
+      width: 999px;
+      display: block;
+    }
+    li {
+      display: inline-block;
+      padding: 25px 0px 25px 10px;
+    }
   }
 }

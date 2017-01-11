@@ -144,56 +144,6 @@ body {
   float: right;
   margin-top: 18px;
 }
-.most-popular-tags {
-  .navbar-inverse .navbar-nav > li > a {
-    color: white;
-  }
-  .navbar-inverse .navbar-brand {
-    color:white;
-  }
-  nav {
-    border-radius: 0;
-    border:none;
-    border-top:2px solid #adb6dd;
-    background-color: #384064;
-  }
-  color: white;
-  //height: 68px;
-  background-color: #384064;
-  list-style: none;
-
-  a {
-    color: white;
-    padding-left: 30px;
-  }
-  a:hover {
-    color:white;
-  }
-  .news-block {
-    text-align: center;
-    background-color: #117ebd;
-    float: left;
-    margin-right: 20px;
-    span {
-      display: inline-block;
-      padding: 25px;
-    }
-  }
-  .selected-tags {
-    ul {
-      margin-bottom: 0px;
-    }
-    li {
-      float: left;
-      list-style: none;
-      display:block;
-      padding: 25px;
-    }
-    li:last-child {
-      float: none;
-    }
-  }
-}
 .add-articles-index {
   a, a:hover {
     color: white;

@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
     end
 
     def set_tags 
-      @tags = Tag.last(5)
+      @tags = Tag.last(20)
     end
   private
     rescue_from CanCan::AccessDenied do |exception|
