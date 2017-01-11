@@ -63,28 +63,31 @@ body {
         width: 41px;
         height: 41px;
         display: block;
-        background-color: #127ebe;
-      }
-      .fb {
+        // background-color: #127ebe;
         img {
-          position: relative;
-          top: 25%;
-          left: 54%;
-          height: 80%;
-          width: 42%;
-          margin: -15% 0 0 -25%;   
+          width: 100%
         }
       }
-      .vk {
-        img {
-          position: relative;
-          top: 33%;
-          left: 39%;
-          height: 64%;
-          width: 70%;
-          margin: -15% 0 0 -25%;
-        }
-      }
+      // .fb {
+      //   img {
+      //     position: relative;
+      //     top: 25%;
+      //     left: 54%;
+      //     height: 80%;
+      //     width: 42%;
+      //     margin: -15% 0 0 -25%;   
+      //   }
+      // }
+      // .vk {
+      //   img {
+      //     position: relative;
+      //     top: 33%;
+      //     left: 39%;
+      //     height: 64%;
+      //     width: 70%;
+      //     margin: -15% 0 0 -25%;
+      //   }
+      // }
       img {
 
       }
@@ -290,20 +293,58 @@ body {
     color: #656e92
   }
 }
+.background-for-tags {
+  background-color: #384064;
+}
 .most-popular-tags {
+  background-color: #384064;
+  #tags {
+    margin-bottom: -7px;
+    a {
+      color: white;
+    }
+    a:hover {
+      color: white;
+    }
+  }
+  #nextPageTags, #prevPageTags {
+    display: inline-block;
+    vertical-align: middle;
+    width: 15px;
+    height: 15px;
+    background-repeat: no-repeat;
+    background-size: 15px 15px; 
+    cursor: pointer;
+    position: relative;
+    top: -24px;
+  }
+  #nextPageTags {
+    background-image: image-url("Crisis_club_icon_arrow_right.png");
+    margin-left: 30px;
+  }
+  #prevPageTags {
+    background-image: image-url("Crisis_club_icon_arrow_right.png");
+    margin-right:15px; 
+  }
   .news-title {
     background-image: image-url("Crisis_club_news_backgroud.png");
+    background-repeat: no-repeat;
     float: left;
     color: white;
-    padding: 25px
+    padding: 25px;
+    margin-right: 20px;
+    background-size:96px 66px;
+    margin-bottom: -2px;
   }
   .tags {
+    display: inline-block;
     height: 66px;
     ul {
       list-style: none;
       white-space: nowrap;
       overflow: auto;
-      width: 999px;
+      overflow-x:hidden;
+      width: 900px;
       display: block;
     }
     li {

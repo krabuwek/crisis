@@ -19,9 +19,12 @@ html
     /[if lt IE 9]
       = javascript_include_tag "https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js", "https://oss.maxcdn.com/respond/1.4.2/respond.min.js"
     script src="http://vk.com/js/api/share.js?94"
+    /script src="http://darsa.in/sly/js/vendor/modernizr.js"
+    
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
+    script src="http://darsain.github.io/sly/js/sly.min.js"
   body
     .header
       - if current_user
@@ -96,21 +99,29 @@ html
                           |С помошью соцсетей:
                         .col-md-3 style="padding:2;"
                           = link_to user_facebook_omniauth_authorize_path, class:"fb" do
-                            = image_tag("Crisis_club_news_icon_fb.png")
+                            = image_tag("Crisis_club_reg_icon_fb.png")
                         .col-md-3 style="padding:0;"
                           = link_to user_vkontakte_omniauth_authorize_path, class:"vk" do
-                            = image_tag("Crisis_club_news_icon_vk.png")
+                            = image_tag("Crisis_club_reg_icon_vk.png")
               .col-md-2
-    .container
-      .most-popular-tags
-        .news-title
-          | Новости
-        .tags
-          ul
+    .background-for-tags
+      .container
+        .most-popular-tags.clear-fix
+          .news-title
+            | Новости
+          #prevPageTags style="display:none"
+            /| <
+          .tags
             - unless @tags.nil?
-              - @tags.each do |tag|
-                li
-                  = link_to_tag tag 
+              ul#tags
+                - @tags.each do |tag|
+                  li
+                    = link_to_tag tag 
+          #nextPageTags
+          /| >
+          
+           
+    /horizontal scroll list        
       / nav.navbar.navbar-inverse role="navigation"
       /   .container
       /     .navbar-header
