@@ -3,6 +3,7 @@ class Article < ApplicationRecord
 
   validates :content, presence: true, length: { minimum: 1 }
   validates :title,   presence: true, length: { maximum: 70 }
+  validates :illustration, presence: true
 
   scope :published, -> { where(published: true) }
   scope :not_published, -> { where(published: false) }
