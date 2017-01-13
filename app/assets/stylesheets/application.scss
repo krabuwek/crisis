@@ -59,6 +59,10 @@ body {
       input[type=text], input[type=email], input[type=password] {
         border-bottom:2px solid #979ba6;
       }
+      input[type=submit] {
+        padding: 5px 21px 5px;
+        background-color: #117ebd;
+      }
       .vk, .fb {
         width: 41px;
         height: 41px;
@@ -125,6 +129,7 @@ body {
     }
     input[type=submit] {
       border:2px solid white;
+      background-color: #117ebd
     }
   }
   background-image: image-url("Crisis_club_bkgrnd.jpg");
@@ -258,7 +263,7 @@ body {
   }
 }
 .footer {
-  font-size: 20px;
+  font-size: 13px;
   margin-top: 30px;
   .row {
     position: relative;
@@ -269,8 +274,8 @@ body {
   .logo {
     text-align: left;
     img {
-      width: 187px;
-      height: 30px;
+      width: 151px;
+      // height: 30px;
     }
   } 
   .info {

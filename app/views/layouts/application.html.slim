@@ -87,7 +87,7 @@ html
                     .col-md-3
                       = f.email_field :email, class: "form-control", placeholder: "Email"
                     .col-md-3
-                      = f.submit  "Зарегестрироваться", class: "btn btn-primary"
+                      = f.submit  "Зарегистрироваться", class: "btn btn-primary"
                   .row
                     .col-md-4
                       = f.password_field :password, class: "form-control", placeholder: "Пароль"
@@ -95,12 +95,13 @@ html
                       = f.password_field :password_confirmation, class: "form-control", placeholder: "Подтвердите пароль"
                     .col-md-4
                       .row
-                        .col-md-6.text-right style="padding:0;"
+                        .col-md-1
+                        .col-md-5.text-right style="padding:0;"
                           |С помошью соцсетей:
                         .col-md-3 style="padding:2;"
                           = link_to user_facebook_omniauth_authorize_path, class:"fb" do
                             = image_tag("Crisis_club_reg_icon_fb.png")
-                        .col-md-3 style="padding:0;"
+                        .col-md-2 style="padding:0;"
                           = link_to user_vkontakte_omniauth_authorize_path, class:"vk" do
                             = image_tag("Crisis_club_reg_icon_vk.png")
               .col-md-2

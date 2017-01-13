@@ -151,12 +151,29 @@ body {
   #add-articles-index {
     color: white;
     display: inline-block;
-    font-size: 20px;
+    // font-size: 20px;
     text-align: center;
     padding: 10px 112px 10px;
     background-color:#384064; 
+    background-image: image-url("Crisis_club_icon_dots.png");
+    background-size: 5px 12px;
+    background-repeat: no-repeat;
+    background-position: left, center;
+    background-position-x: 33%;
   }
   margin-bottom: 30px;
+}
+.go-top a {
+  height: 38px;
+  width: 38px;
+  display: block;
+  background-image: image-url("Crisis_club_go_top.png");
+  background-size:38px 38px;
+  background-repeat: no-repeat;
+  // background-position: right;
+  float: right;
+  position: relative;
+  top:-68px;
 }
   //height 68
   //.news-block
