@@ -328,29 +328,43 @@ body {
     margin-left: 30px;
   }
   #prevPageTags {
-    background-image: image-url("Crisis_club_icon_arrow_right.png");
-    margin-right:15px; 
+    background-image: image-url("Crisis_club_icon_arrow_left.png");
+    margin-right:30px; 
   }
   .news-title {
     background-image: image-url("Crisis_club_news_backgroud.png");
     background-repeat: no-repeat;
     float: left;
     color: white;
-    padding: 25px;
+    font-size: 20px;
+    // padding: 25px;
+    // margin-right: 20px;
+    // background-size:96px 66px;
+    // margin-bottom: -2px;
+    // margin-left: 14px;
+    padding: 18px 38px 20px 26px;
     margin-right: 20px;
-    background-size:96px 66px;
+    background-size: 135px 66px;
+    // padding: 25px 92px 25px 25px;
+    // margin-right: 20px;
+    // background-size: 163px 66px;
     margin-bottom: -2px;
+    margin-left: 14px;
   }
   .tags {
     display: inline-block;
     height: 66px;
-    ul {
+    #tags {
       list-style: none;
       white-space: nowrap;
       overflow: auto;
       overflow-x:hidden;
-      width: 900px;
+      width: 826px;
       display: block;
+      padding-left: 0px;
+      li:first-child {
+        padding-left: 46px;
+      }
     }
     li {
       display: inline-block;
