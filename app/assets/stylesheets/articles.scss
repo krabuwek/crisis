@@ -82,6 +82,9 @@ body {
   float: left;
   .shared-top {
     float: right;
+    .addthis_inline_share_toolbox {
+      float: left;
+    }
   }
   .shared-button {
     .shared-title {
@@ -91,6 +94,11 @@ body {
       margin-right: 2px;
       color: #46b0ef;
     }
+    .addthis_inline_share_toolbox {
+      clear: none !important;
+      // float: left;
+    }
+    // clear: right;
   }
   img {
     margin-bottom: 30px;
