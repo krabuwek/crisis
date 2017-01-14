@@ -4,9 +4,10 @@
 - else    
     .articles.clear-fix
         = render partial: "articles"
+    .go-top
+    	a href="#"
     .container.add-articles-index.text-center
         #add-articles-index
             = link_to_next_page @articles,"Показать ещё",  remote: true
-    .go-top
-    	a href="#"
+
     	
