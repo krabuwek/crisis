@@ -1,13 +1,15 @@
 .comment id="#{comment.id}"
-	.avatar
-		- if image_tag comment.user.avatar.nil?
-			= image_tag "Crisis_club_icon_profile.png", style: "width:86px; height:86px;"
-		- else 
-			= image_tag comment.user.avatar.url, style: "width:86px; height:86px;"
+	= link_to user_path comment.user do
+		.avatar
+			- if comment.user.avatar.url.nil?
+				= image_tag "Crisis_club_icon_profile.png", style: "width:86px; height:86px; border:none"
+			- else 
+				= image_tag comment.user.avatar.for_message.url, style: "width:86px; height:86px;"
 	.content
 		.header-comment-content
-			.name-user
-				= first_and_last_name comment.user
+			= link_to user_path comment.user do
+				.name-user
+					= first_and_last_name comment.user
 			.datetime
 				= created_at_article comment
 		.body

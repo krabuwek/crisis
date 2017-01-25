@@ -1,4 +1,9 @@
 - unless @article.comments.empty?
     = render 'comments/comments', comments: comments 
+- if current_user
+	= render 'comments/form' if can? :create, Comment
+- else
+	.bs-callout.bs-callout-info.text-left.text-nowrap
+		| Чтобы оставить комментарий пожалуйста 
+		span#go-registration зарегистрируйте
 
-= render 'comments/form' if can? :create, Comment

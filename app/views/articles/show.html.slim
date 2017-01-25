@@ -1,47 +1,28 @@
 /p#notice = notice
-.show-article
-	h1 = @article.title
-	.created-at
-		= created_at_article @article
-		.shared-top
-			= render partial:"shared_buttons"
-	= image_tag(@article.illustration.url, class: "img-responsive") unless @article.illustration.file.nil?
-	.content
-		= @article.content.html_safe
-	/#fb-root
-	javascript:
-		//(function(d, s, id) {
-		 // var js, fjs = d.getElementsByTagName(s)[0];
-		//  if (d.getElementById(id)) return;
-		//  js = d.createElement(s); js.id = id;
-		//  js.src = "//connect.facebook.net/ru_RU/sdk.js#xfbml=1&version=v2.8&appId=644481139092321";
-		//  fjs.parentNode.insertBefore(js, fjs);
-		//}(document, 'script', 'facebook-jssdk'));
-	.footer-article
-		/#fb-share-button data-href="#{root_path}" data-layout="button" data-size="small" data-mobile-iframe="true"
-			/a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse"
-			/	|Поделиться
-		= link_to article_marks_path(@article), method: :post do
-			.marks
-				.like
-					.icon
-					span Мне нравится
-		= render partial: "shared_buttons"
-		javascript:
-			//$(".like").append(VK.Share.button(false, {
-			//	type: "round", 
-			//	text: "jnfds",
-			//	title: "bla bla bla"
-			//}));
-			// document.write(VK.Share.button(false,{type: "round", text: "Сохранить", title:"dsadas", description: 'Это мой собственный сайт, я его очень долго делал'}));
-			//$(".like").append(VK.Share.button({
-			//	url: 'localhost:3000/articles',
-  		//	title: 'Awesome site',
-  		//	description: 'It\'s the most awesome site ever',
-			//}));		
-	.tags
-		|Теги: 
-		- @article.tags.each do |tag|
-			= link_to_tag tag		
-	= render 'comments/index', comments: @article.comments 
-= render "article_sidebar"
+.container
+	.row
+		.col-md-8.col-xs-12.col-sm-12
+			.show-article
+				h1.hidden-xs.hidden-sm = @article.title
+				.created-at.hidden-xs.hidden-sm
+					= created_at_article @article
+					.shared-top
+						= render partial:"shared_buttons"
+				= image_tag(@article.illustration.url, class: "img-responsive") unless @article.illustration.file.nil?
+				h1.hidden-md = @article.title
+				.content
+					= @article.content.html_safe
+				.footer-article
+					.marks
+						= link_to article_marks_path(@article), method: :post do
+							.like
+								.icon
+								span Мне нравится
+					= render partial: "shared_buttons"	
+				.tags
+					|Теги: 
+					- @article.tags.each do |tag|
+						= link_to_tag tag		
+				= render 'comments/index', comments: @article.comments
+		.col-md-4.col-xs-12.col-sm-12
+			= render "article_sidebar"

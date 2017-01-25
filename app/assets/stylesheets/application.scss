@@ -14,7 +14,26 @@
  *= require_self
  *= require devise_bootstrap_views  
  */
- 
+
+
+$screen-xs-max: 768px;
+$screen-sm-min: 769px;
+$screen-sm-max: 992px;
+$screen-md-min: 993px;
+
+@mixin respond-to($media) {
+  @if $media == xs {
+    @media only screen and (max-width: $screen-xs-max) { @content; }
+  }
+  @else if $media == sm {
+    @media only screen and (min-width: $screen-sm-min) and (max-width: $screen-sm-max) { @content; }
+  }
+  @else if $media == md {
+    @media only screen and (min-width: $screen-md-min) { @content; }
+  }
+}
+
+//@import "https://fonts.googleapis.com/css?family=Open+Sans:400,700&subset=cyrillic,cyrillic-ext";
 .clear-fix:after {
   content: ".";
   display: block;
@@ -22,7 +41,19 @@
   clear: both;
   visibility: hidden;
 }
-
+h1 {
+  font-size: 30px;
+}
+.bs-callout {
+  padding: 20px;
+  margin: 20px 0;
+  border: 1px solid #eee;
+  border-left-width: 5px;
+  border-radius: 3px;
+}
+.bs-callout-info {
+  border-left-color: #5bc0de;
+}
 // body > .container, .footer > .container, .most-popular-tags > .container {
 //   width: 1127px;
 // }
@@ -31,7 +62,7 @@ body {
   font-family: "Open Sans";
 }
 .container {
-  width: 1127px;
+  // width: 1127px;
 }
 .body-container {
   min-height: 600px;
@@ -51,47 +82,76 @@ body {
       margin-top: 20px;
       padding-bottom: 41px;
       //background: white;
+
+      @include respond-to(xs) {
+        input {
+          margin: 5px 0 5px;
+        }
+      }
+
+      @include respond-to(sm) {
+        input {
+          margin: 5px 0 5px;
+        }
+      }
+
       input {
         border-radius: 0px;
         border:none;
         text-align: center;
       }
+
       input[type=text], input[type=email], input[type=password] {
         border-bottom:2px solid #979ba6;
       }
       input[type=submit] {
-        padding: 5px 21px 5px;
+        padding: 7px 21px 7px;
         background-color: #117ebd;
+        font-size: 12px;
+        @include respond-to(xs) {
+          padding: 7px 43px 7px;
+        }
+        @include respond-to(sm) {
+          padding: 7px 43px 7px;
+        }
+      }
+      // .fb {
+      //   float: right; 
+      // }
+      // .vk {
+      //   float: left;
+      // }
+
+      @include respond-to(xs) {
+        .vk, .fb {
+          width: 41px;
+        }
+        .fb {
+          margin-left: 5px;
+        }
+      }
+      @include respond-to(sm) {
+        .vk, .fb {
+          width: 41px;
+        }
+        .fb {
+          margin-left: 5px;
+        }
+      }
+      @include respond-to(md) {
+        .vk, .fb {
+          width: 40%
+        }
+        .fb {
+          margin-left: 15px;
+        }
       }
       .vk, .fb {
-        width: 41px;
-        height: 41px;
-        display: block;
-        // background-color: #127ebe;
+        display: inline-block;
         img {
           width: 100%
         }
       }
-      // .fb {
-      //   img {
-      //     position: relative;
-      //     top: 25%;
-      //     left: 54%;
-      //     height: 80%;
-      //     width: 42%;
-      //     margin: -15% 0 0 -25%;   
-      //   }
-      // }
-      // .vk {
-      //   img {
-      //     position: relative;
-      //     top: 33%;
-      //     left: 39%;
-      //     height: 64%;
-      //     width: 70%;
-      //     margin: -15% 0 0 -25%;
-      //   }
-      // }
       img {
 
       }
@@ -108,6 +168,7 @@ body {
   
   .border-bottom-dashed {
     border-bottom: 1px dashed #8091d5;
+    font-size: 12px;
   }
   .border-bottom-dashed, .border-bottom-dashed a, .border-bottom-dashed a:hover {
     color: #8091d5; 
@@ -137,10 +198,20 @@ body {
     img {
       padding-top: 87px;
       // margin: 0 auto;
-      // width: 373px;
-      height: 68px;
+      // width: 373px;  
       display: block;
-      margin-left: 38px;
+      @include respond-to(md) {
+        margin-left: 38px;
+        height: 48px;
+      }
+      @include respond-to(sm) {
+        width: 75%;
+        margin: 25px auto;
+      }
+      @include respond-to(xs) {
+          width: 75%;
+          margin: 25px auto;
+      }
     }
   }
   .auth-true {
@@ -244,13 +315,24 @@ body {
             }
           }
           a {
-            display: inline-block;
-            width: 41px;
-            height: 41px;
-            background-color: #117ebd;
-            //line-height: 200px;
-            position: relative;
+             background-color: #117ebd;
+             display: inline-block; 
+          }
+          @include respond-to(md) {
+            a {
+              
+              width: 41px;
+              height: 41px;
+             
+              //line-height: 200px;
+              position: relative;
 
+            }
+          }
+          @include respond-to(xs) {
+            a {
+              width: 100%
+            }
           }
           a:last-child {
             margin-left: 10px;
@@ -266,14 +348,39 @@ body {
 .footer {
   font-size: 13px;
   margin-top: 30px;
-  .row {
-    position: relative;
-    top: 30px;
+  @include respond-to(md) {
+    .row {
+      position: relative;
+      top: 30px;
+      height: 82px;
+    }
   }
-  height: 82px;
+
+  
+  @include respond-to(xs) {
+    .my-col {
+      padding:10px; 
+    }
+  }
+
+  @include respond-to(sm) {
+    .my-col {
+      padding:10px; 
+    }
+  }
+
+  
   background-color: #384064;
   .logo {
-    text-align: left;
+    @include respond-to(md) {
+      text-align: left;
+    }
+    @include respond-to(xs) {
+      text-align: center;
+    }
+    @include respond-to(sm) {
+      text-align: center;
+    }
     img {
       width: 151px;
       // height: 30px;
@@ -321,8 +428,7 @@ body {
     background-repeat: no-repeat;
     background-size: 15px 15px; 
     cursor: pointer;
-    position: relative;
-    top: -24px;
+  
   }
   #nextPageTags {
     background-image: image-url("Crisis_club_icon_arrow_right.png");
@@ -355,12 +461,13 @@ body {
   .tags {
     display: inline-block;
     height: 66px;
+    width: 71%;
     #tags {
       list-style: none;
       white-space: nowrap;
       overflow: auto;
       overflow-x:hidden;
-      width: 826px;
+      // width: 826px;
       display: block;
       padding-left: 0px;
       li:first-child {
@@ -369,7 +476,12 @@ body {
     }
     li {
       display: inline-block;
-      padding: 25px 0px 25px 10px;
+      padding: 25px 0px 0px 10px;
     }
+  }
+}
+.col-sm-12 .col-xs-12 {
+  img {
+    width: 100%
   }
 }

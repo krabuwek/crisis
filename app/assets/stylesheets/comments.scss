@@ -35,6 +35,10 @@
   .name-user, .datetime, .avatar, .content {
   //  float: left;
   }
+  .name-user {
+    color: #384064;
+    font-weight: bold;
+  }
   .avatar, .name-user {
     float: left;
   }
@@ -45,12 +49,18 @@
   .header-comment-content {
     clear: right;
   }
+  img {
+    border: 1px solid #384064;
+  }
 }
 .comment-form {
   clear: left;
   margin-bottom: 20px;
   .avatar {
     float: left;
+  }
+  img {
+    border: 1px solid #384064;
   }
   .name-user {
    // padding-left: 30px;
@@ -61,5 +71,13 @@
 }
 #comment_content {
   display: block;
-  width: 600px;
+  // width: 600px;
+}
+#go-registration {
+  text-decoration: underline;
+  color: #337ab7;
+  cursor: pointer;
+}
+#go-registration :hover {
+  color: #23527c;
 }

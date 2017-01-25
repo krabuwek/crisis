@@ -25,7 +25,7 @@ class ArticlesController < ApplicationController
   # GET /articles/1
   # GET /articles/1.json
   def show
-    @articles = Article.all.limit(5)
+    @articles = Article.where.not(id: @article.id).limit(5)
   end
 
   # GET /articles/new

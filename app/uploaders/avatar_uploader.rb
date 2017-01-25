@@ -23,7 +23,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
   end
 
   version :for_message do
-    process resize_to_fill: [64, 64]
+    process resize_to_fill: [86, 86]
   end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
