@@ -82,6 +82,11 @@ body {
       margin-top: 20px;
       padding-bottom: 41px;
       //background: white;
+      @include respond-to(md) {
+        .fix-social {
+          padding-right: 0 !important;
+        }
+      }
 
       @include respond-to(xs) {
         input {
@@ -105,7 +110,10 @@ body {
         border-bottom:2px solid #979ba6;
       }
       input[type=submit] {
-        padding: 7px 21px 7px;
+        @include respond-to(md) {
+          width: 100%;  
+        }
+        padding: 7px 0px 7px;
         background-color: #117ebd;
         font-size: 12px;
         @include respond-to(xs) {

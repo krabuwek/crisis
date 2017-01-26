@@ -1,5 +1,4 @@
-- unless @article.comments.empty?
-    = render 'comments/comments', comments: comments 
+= render 'comments/comments'
 - if current_user
 	= render 'comments/form' if can? :create, Comment
 - else

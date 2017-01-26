@@ -10,8 +10,6 @@ document.addEventListener("turbolinks:load", ->
     body.stop().animate({ scrollTop: 134 }, '500', 'swing', ->
       $("#registration").slideToggle("slow")
     )
-
-  
 #     #     $("#new_comment").append xhr.responseText
 #     #   ).on "ajax:error", (e, xhr, status, error) ->
 #     #     $("#new_comment").append "<p>ERROR</p>"

@@ -23,6 +23,6 @@
 					|Теги: 
 					- @article.tags.each do |tag|
 						= link_to_tag tag		
-				= render 'comments/index', comments: @article.comments
+				= render 'comments/index'
 		.col-md-4.col-xs-12.col-sm-12
 			= render "article_sidebar"

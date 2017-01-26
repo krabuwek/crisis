@@ -10,5 +10,5 @@
 				= @article.comments_count
 				|)
 .comments
-	- comments.each do |comment|
+	- @article.comments.each do |comment|
 		= render 'comments/comment', comment: comment

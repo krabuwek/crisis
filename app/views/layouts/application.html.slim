@@ -101,11 +101,11 @@ html
                       .row.hidden-md.hidden-lg.text-center
                           = f.submit  "Зарегистрироваться", class: "btn btn-primary"
                       .row
-                        .col-md-5.col-md-offset-1.text-right.col-sm-4.col-xs-4.col-xs-offset-2.col-xs-offset-2
+                        .col-md-5.col-md-offset-1.text-right.col-sm-4.col-xs-4.col-xs-offset-2.col-xs-offset-2.fix-social
                           |С помошью 
                           br
                             |соцсетей:
-                        .col-md-6.col-sm-2.col-xs-4.clearfix
+                        .col-md-6.col-sm-2.col-xs-6.clearfix
                           = link_to user_vkontakte_omniauth_authorize_path, class:"vk" do
                               = image_tag("Crisis_club_reg_icon_vk.png")
                           = link_to user_facebook_omniauth_authorize_path, class:"fb" do
