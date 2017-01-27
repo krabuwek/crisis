@@ -115,12 +115,12 @@ body {
     margin-bottom: 30px;
   }
    @include respond-to(xs) {
-     img {
+     .img-responsive {
         margin-top: 30px; 
      }
    }
    @include respond-to(sm) {
-     img {
+     .img-responsive {
         margin-top: 30px;
      }
    }
@@ -193,12 +193,15 @@ body {
   }
   margin-bottom: 30px;
 }
-.go-top a {
-  height: 38px;
-  width: 38px;
-  display: block;
-  background-image: image-url("Crisis_club_go_top.png");
-  background-size:38px 38px;
-  background-repeat: no-repeat;
-  float: right;
+.go-top {
+  display: inline;
+  a {
+    height: 38px;
+    width: 38px;
+    display: block;
+    background-image: image-url("Crisis_club_go_top.png");
+    background-size:38px 38px;
+    background-repeat: no-repeat;
+    float: right;
+  }
 }

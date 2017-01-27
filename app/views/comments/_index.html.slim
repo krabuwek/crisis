@@ -2,7 +2,7 @@
 - if current_user
 	= render 'comments/form' if can? :create, Comment
 - else
-	.bs-callout.bs-callout-info.text-left.text-nowrap
+	.bs-callout.bs-callout-info.text-left
 		| Чтобы оставить комментарий пожалуйста 
 		span#go-registration зарегистрируйте
 

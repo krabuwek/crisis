@@ -10,7 +10,7 @@
 			= link_to user_path comment.user do
 				.name-user
 					= first_and_last_name comment.user
-			.datetime
+			.datetime.hidden-xs
 				= created_at_article comment
 		.body
 			= comment.content
