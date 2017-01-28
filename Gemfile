@@ -27,6 +27,8 @@ gem 'mini_magick'
 gem 'devise-bootstrap-views'
 gem 'kaminari'
 gem 'rails_admin', '~> 1.0'
+#set metags
+gem 'metamagic'
 group :development do
     gem 'capistrano',         require: false
     gem 'capistrano-rvm',     require: false
