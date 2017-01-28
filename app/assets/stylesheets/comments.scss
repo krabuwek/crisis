@@ -1,6 +1,22 @@
+@import "bootstrap-generators.scss";
+
+.comment {
+  img {
+    width: 100%;
+    height:auto;
+    border: 1px solid #384064;
+    margin-bottom: 0px;
+  }
+  .responses {
+    padding-top: 15px;
+    .response {
+      padding-bottom: 15px;
+    }
+  }
+}
 .comments-header {
   font-style: bold;
-  //вынести эту парашу в отдельный селектор
+  padding-bottom: 15px;
   .icon {
     background-image: image-url("Crisis_club_icon_comment.png");
     width: 18px;
@@ -8,70 +24,17 @@
     background-repeat: no-repeat;
     background-position: left top;
     background-size: 18px 18px;
-    //float: left;
-    //margin-left: 10px;
     padding-right: 28px;
     display: inline-block;
   }
   .exists-comments {
-    //margin-left: 10px;
-    //clear: right;
     display: inline-block;
     font-size: 20px;
 
   }
 }
-.show-article .comments {
-  padding-top: 20px;
-  .comment {
-    clear: both;
-    margin-bottom: 20px;
-    min-height: 86px;
-  }
-  .content {
-    margin-left:110px;
-    min-height: 100px;
-  }
-  .name-user, .datetime, .avatar, .content {
-  //  float: left;
-  }
-  .name-user {
-    color: #384064;
-    font-weight: bold;
-  }
-  .avatar, .name-user {
-    float: left;
-  }
-  .datetime {
-    margin-left: 121px;
-    //clear: right;
-  }
-  .header-comment-content {
-    clear: right;
-  }
-  img {
-    border: 1px solid #384064;
-  }
-}
-.comment-form {
-  clear: left;
-  margin-bottom: 20px;
-  .avatar {
-    float: left;
-  }
-  img {
-    border: 1px solid #384064;
-  }
-  .name-user {
-   // padding-left: 30px;
-  }
-  .content {
-    padding-left: 112px;
-  }
-}
 #comment_content {
   display: block;
-  // width: 600px;
 }
 #go-registration {
   text-decoration: underline;

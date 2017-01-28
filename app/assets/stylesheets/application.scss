@@ -16,33 +16,17 @@
  */
 
 
-$screen-xs-max: 768px;
-$screen-sm-min: 769px;
-$screen-sm-max: 992px;
-$screen-md-min: 993px;
-
-@mixin respond-to($media) {
-  @if $media == xs {
-    @media only screen and (max-width: $screen-xs-max) { @content; }
-  }
-  @else if $media == sm {
-    @media only screen and (min-width: $screen-sm-min) and (max-width: $screen-sm-max) { @content; }
-  }
-  @else if $media == md {
-    @media only screen and (min-width: $screen-md-min) { @content; }
-  }
-}
+@import "bootstrap-generators.scss";
 
 //@import "https://fonts.googleapis.com/css?family=Open+Sans:400,700&subset=cyrillic,cyrillic-ext";
+//font family look in  /layouts/application.html.slim
+
 .clear-fix:after {
   content: ".";
   display: block;
   height: 0;
   clear: both;
   visibility: hidden;
-}
-h1 {
-  font-size: 30px;
 }
 .bs-callout {
   padding: 20px;
@@ -54,15 +38,9 @@ h1 {
 .bs-callout-info {
   border-left-color: #5bc0de;
 }
-// body > .container, .footer > .container, .most-popular-tags > .container {
-//   width: 1127px;
-// }
 body {
   font-size: 13px;
   font-family: "Open Sans";
-}
-.container {
-  // width: 1127px;
 }
 .body-container {
   min-height: 600px;
@@ -81,7 +59,6 @@ body {
   .register-form {
       margin-top: 20px;
       padding-bottom: 41px;
-      //background: white;
       @include respond-to(md) {
         .fix-social {
           padding-right: 0 !important;
@@ -123,13 +100,6 @@ body {
           padding: 7px 43px 7px;
         }
       }
-      // .fb {
-      //   float: right; 
-      // }
-      // .vk {
-      //   float: left;
-      // }
-
       @include respond-to(xs) {
         .vk, .fb {
           width: 41px;
@@ -205,8 +175,6 @@ body {
   .logo {
     img {
       padding-top: 87px;
-      // margin: 0 auto;
-      // width: 373px;  
       display: block;
       @include respond-to(md) {
         margin-left: 38px;
@@ -229,9 +197,6 @@ body {
     .logo {
       img {
         padding-top: 0px;
-        // position: relative;
-        // left: -13%;
-        // top: -13px;
       }
     }
     .info-user {
@@ -327,12 +292,9 @@ body {
              display: inline-block; 
           }
           @include respond-to(md) {
-            a {
-              
+            a {           
               width: 41px;
               height: 41px;
-             
-              //line-height: 200px;
               position: relative;
 
             }
@@ -452,17 +414,9 @@ body {
     float: left;
     color: white;
     font-size: 20px;
-    // padding: 25px;
-    // margin-right: 20px;
-    // background-size:96px 66px;
-    // margin-bottom: -2px;
-    // margin-left: 14px;
     padding: 18px 38px 20px 26px;
     margin-right: 20px;
     background-size: 135px 66px;
-    // padding: 25px 92px 25px 25px;
-    // margin-right: 20px;
-    // background-size: 163px 66px;
     margin-bottom: -2px;
     margin-left: 14px;
   }
@@ -475,7 +429,6 @@ body {
       white-space: nowrap;
       overflow: auto;
       overflow-x:hidden;
-      // width: 826px;
       display: block;
       padding-left: 0px;
       li:first-child {

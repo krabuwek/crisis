@@ -1,16 +1,17 @@
-.response
-	= link_to user_path response.user do
-		.avatar
+.row.response
+	.col-md-2.col-sm-3.col-xs-3.col-md-offset-2.col-sm-offset-3.col-xs-offset-3
+		= link_to user_path response.user do
 			- if response.user.avatar.url.nil?
-				= image_tag "Crisis_club_icon_profile.png", style: "width:86px; height:86px; border:none;"
+				= image_tag "Crisis_club_icon_profile.png", style: "border:none"
 			- else 
-				= image_tag response.user.avatar.for_message.url, style: "width:86px; height:86px;"
-	.content
-		.header-comment-content
-			= link_to user_path response.user do
-				.name-user
+				= image_tag response.user.avatar.for_message.url
+	.col-md-7.col-sm-7.col-xs-6
+		.row
+			.col-md-3.col-sm-6.col-xs-12
+				= link_to user_path response.user do
 					= first_and_last_name response.user
-			.datetime.hidden-xs
+			.col-md-9.col-sm-6.col-xs-12
 				= created_at_article response
-		.body
-			= response.content
+		.row
+			.col-md-12.col-sm-12.col-xs-12
+				= response.content

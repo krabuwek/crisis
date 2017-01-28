@@ -1,12 +1,14 @@
-#response-form
-	.avatar
-		- if current_user.avatar.url.nil?
-			= image_tag "Crisis_club_icon_profile.png", style: "width:86px; height:86px; border:none;"
-		- else 
-			= image_tag current_user.avatar.for_message.url, style: "width:86px; height:86px;"
-	.content
-		.name-user
-			= first_and_last_name current_user
-		= simple_form_for [@comment, @comment.responses.new], remote: true, html:{ "data-turbolinks" => false } do |f|
-		  = f.input :content, label: false, input_html: { rows: '3'}, as: :text
-		  = f.button :submit, 'Отправить'
+#response-form.row
+	.col-md-2.col-sm-3.col-xs-3.col-md-offset-2.col-sm-offset-3.col-xs-offset-3
+		.avatar
+			- if current_user.avatar.url.nil?
+				= image_tag "Crisis_club_icon_profile.png", style: "border:none;"
+			- else 	
+				= image_tag current_user.avatar.for_message.url
+	.col-md-7.col-sm-7.col-xs-6
+		.content
+			.name-user
+				= first_and_last_name current_user
+			= simple_form_for [@comment, @comment.responses.new], remote: true, html:{ "data-turbolinks" => false } do |f|
+			  = f.input :content, label: false, input_html: { rows: '3'}, as: :text
+			  = f.button :submit, 'Отправить'

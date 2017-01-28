@@ -3,6 +3,21 @@
 @import "bootstrap-sprockets.scss";
 @import "bootstrap.scss";
 
+
+@mixin respond-to($media) {
+  @if $media == xs {
+    @media only screen and (max-width: $screen-xs-max) { @content; }
+  }
+  @else if $media == sm {
+    @media only screen and (min-width: $screen-sm-min) and (max-width: $screen-sm-max) { @content; }
+  }
+  @else if $media == md {
+    @media only screen and (min-width: $screen-md-min) { @content; }
+  }
+}
+
+
+
 body {
   padding-top: $navbar-height + 10px;
 }
