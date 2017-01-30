@@ -4,12 +4,8 @@
 - else    
     .articles.clear-fix
         = render partial: "articles"
-    /.go-top
-    	a href="#"
     .add-articles-index.text-center.row
-    	.row
-        #add-articles-index
-          = link_to_next_page @articles,"Показать ещё",  remote: true
+        = link_to_next_page @articles, "<div id='add-articles-index'>Показать ещё</div>".html_safe, remote: true
         .go-top
             a href="#"
 

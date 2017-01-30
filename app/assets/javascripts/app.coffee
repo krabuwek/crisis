@@ -22,5 +22,9 @@ document.addEventListener("turbolinks:load", ->
       $(this).hide()
     if $tags[0].scrollWidth - $tags[0].clientWidth >= currentScroll
       $nextPageTags.show()
+
+  $(".go-top").click ->
+    $("html body").animate({ scrollTop: 0 },  400)
+
 ) 
 #$("html, body").animate({ scrollTop: 0 }, 600);
