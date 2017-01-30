@@ -111,15 +111,16 @@ html
           = link_to root_path do
             .news-title
               | Новости
-          #prevPageTags style="display:none"
+          
             /| <
           .tags
+            #prevPageTags style="display:none"
             - unless @tags.nil?
               ul#tags
                 - @tags.each do |tag|
                   li
                     = link_to_tag tag 
-          #nextPageTags
+            #nextPageTags
     .container.body-container
       /- flash.each do |name, msg|
         = content_tag :div, class: "alert alert-#{ name == :error ? "danger" : "success" } alert-dismissable", role: "alert" do

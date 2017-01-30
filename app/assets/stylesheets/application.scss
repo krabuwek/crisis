@@ -41,6 +41,9 @@
 body {
   font-size: 13px;
   font-family: "Open Sans";
+  h1, h2 {
+    font-size: 26px;
+  }
 }
 .body-container {
   min-height: 600px;
@@ -381,6 +384,7 @@ body {
 }
 .most-popular-tags {
   background-color: #384064;
+  position: relative;
   #tags {
     margin-bottom: -7px;
     a {
@@ -398,15 +402,19 @@ body {
     background-repeat: no-repeat;
     background-size: 15px 15px; 
     cursor: pointer;
+    position: absolute;
+    top: 41%;
   
   }
   #nextPageTags {
     background-image: image-url("Crisis_club_icon_arrow_right.png");
     margin-left: 30px;
+    left: 97%;
   }
   #prevPageTags {
     background-image: image-url("Crisis_club_icon_arrow_left.png");
     margin-right:30px; 
+    left: 0%;
   }
   .news-title {
     background-image: image-url("Crisis_club_news_backgroud.png");
@@ -416,23 +424,23 @@ body {
     font-size: 20px;
     padding: 18px 38px 20px 26px;
     margin-right: 20px;
-    background-size: 135px 66px;
-    margin-bottom: -2px;
     margin-left: 14px;
   }
   .tags {
     display: inline-block;
     height: 66px;
     width: 71%;
+    position: absolute;
     #tags {
       list-style: none;
       white-space: nowrap;
       overflow: auto;
       overflow-x:hidden;
       display: block;
-      padding-left: 0px;
+      margin-left: 21px;
+      padding-left: 0;
       li:first-child {
-        padding-left: 46px;
+        padding-left: 0px;
       }
     }
     li {
