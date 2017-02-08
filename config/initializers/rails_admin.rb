@@ -38,4 +38,106 @@ RailsAdmin.config do |config|
     # history_index
     # history_show
   end
+
+  config.model Article do
+    configure :title do
+      label "Название"
+    end
+    configure :content do
+      label "Текст"
+    end
+    configure :published do
+      label "Опубликована"
+    end
+    configure :user do
+      label "Пользователь"
+    end
+    configure :tags do 
+      label "Теги"
+    end
+    configure :illustration do
+      label "Иллюстрация"
+    end
+    configure :created_at do
+      label "Дата создания"
+    end
+    configure :updated_at do 
+      label "Дата обновления"
+    end
+    configure :comments do
+      label "Комментарии"
+    end
+  end
+
+  config.model Comment do
+    configure :content do
+      label "Комментарий"
+    end
+    configure :user do
+      label "Пользователь"
+    end
+    configure :article do
+      label "Статья"
+    end
+    configure :created_at do
+      label "Дата создания"
+    end
+    configure :updated_at do 
+      label "Дата обновления"
+    end
+  end
+
+  config.model Response do
+    configure :comment do
+      label "Комментарий"
+      pretty_value do 
+        value.titleize
+      end
+
+    end
+    configure :content do
+      label "Ответ"
+    end
+    configure :created_at do
+      label "Дата создания"
+    end
+    configure :updated_at do 
+      label "Дата обновления"
+    end
+    configure :user do
+      label "Пользователь"
+    end
+  end
+
+  config.model Mark do
+    configure :article do
+      label "Статься"
+    end
+    configure :user do
+      label "Пользователь"
+    end
+    configure :created_at do
+      label "Дата создания"
+    end
+    configure :updated_at do 
+      label "Дата обновления"
+    end
+  end
+
+  config.model Identity do
+    visible false
+  end
+
+  config.model User do
+    list do 
+      field :id
+      field :email
+      field :role do 
+        label "Роль"
+      end
+    end
+    configure :role do
+      label "Роль"
+    end
+  end
 end

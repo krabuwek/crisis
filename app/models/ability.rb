@@ -39,6 +39,7 @@ class Ability
     unless user.new_record?
       can :create, Comment, article: {:published? => true}
       can :destroy, Comment, user: user
+      can :all, User, user: user
 
       can :create, Mark do |mark|
         mark.article.user != user

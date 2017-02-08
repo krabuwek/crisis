@@ -27,6 +27,7 @@ gem 'mini_magick'
 gem 'devise-bootstrap-views'
 gem 'kaminari'
 gem 'rails_admin', '~> 1.0'
+gem 'enumerize'
 #set metags
 gem 'metamagic'
 group :development do

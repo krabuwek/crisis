@@ -2,6 +2,8 @@ class User < ApplicationRecord
   TEMP_EMAIL_PREFIX = 'change@me'
   TEMP_EMAIL_REGEX = /\Achange@me/
 
+  extend Enumerize
+  enumerize :role, in: [:user, :moderator, :admin]
 
   #validates_format_of :email, :without => TEMP_EMAIL_REGEX, on: :update
 
@@ -61,5 +63,9 @@ class User < ApplicationRecord
 
   def email_verified?
     self.email && self.email !~ TEMP_EMAIL_REGEX
+  end
+
+  def title
+    self.email
   end
 end
