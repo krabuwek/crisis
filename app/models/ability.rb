@@ -65,7 +65,10 @@ class Ability
           can :manage, Response
           can :manage, Comment
           cannot [:create, :update, :destroy], Article, published: true
-        when 'admin' then can :manage, :all
+        when 'admin'
+          can :manage, :all
+          can :access, :rails_admin     
+          can :dashboard  
       end
     end
     

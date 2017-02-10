@@ -42,15 +42,18 @@ class Article < ApplicationRecord
     Article.decrement_counter(:comments_count, self.id)
   end
 
-  # rails_admin do 
-  #   edit do   
-  #     field :user, :hidden do
-  #       visible false
-  #       default_value do
-  #         bindings[:view]._current_user.id
-  #       end
-  #     end
-  #   end 
-  # end
-
+  rails_admin do 
+    edit do   
+      field :title
+      field :content
+      field :illustration
+      field :published
+      field :tags
+      field :user_id, :hidden do
+        default_value do
+          bindings[:view]._current_user.id
+        end
+      end
+    end 
+  end
 end
