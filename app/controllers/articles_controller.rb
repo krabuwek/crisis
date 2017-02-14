@@ -9,10 +9,10 @@ class ArticlesController < ApplicationController
     if params[:tag].nil?
       if params[:my_article]
         #current_user.articles.not_published
-        if current_user.articles.published.empty?
+        if current_user.articles.not_published.empty?
           @message = "Вы не предложили ни одной новости или их уже опубликовали"
         else
-          @articles = current_user.articles.published
+          @articles = current_user.articles.not_published.page params[:pages]
         end
       else  
         @articles = Article.published.page params[:page]
@@ -45,15 +45,9 @@ class ArticlesController < ApplicationController
     @article = Article.new(article_params)
     @article.user_id = current_user.id
     authorize! :create, @article
-    @article.published = true
-    #binding.pry
-    # ActiveRecord::Base.transaction do
-    #   @article.save
-    #   @article.tags << find_or_create_tags unless params[:tags].empty?
-    # end
     respond_to do |format|
       if @article.save
-        @article.tags << find_or_create_tags(params[:tags].map{|k, v| v}) unless params[:tags].empty?
+        @article.tags << find_or_create_tags(params[:tags].map{|k, v| v}) unless params[:tags].empty? || params[:tags][0].nil?
         format.html { redirect_to @article, notice: 'Article was successfully created.' }
         format.json { render :show, status: :created, location: @article }
       else

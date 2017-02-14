@@ -16,5 +16,4 @@ Rails.application.routes.draw do
   post 'comment/:id/response' => "responses#create", as: :comment_responses
   get 'comment/:id/response' => "responses#new", as: :new_comment_responses
 
-
 end

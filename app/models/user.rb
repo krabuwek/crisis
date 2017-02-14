@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  before_create :setup_default_role_for_new_users
+
   TEMP_EMAIL_PREFIX = 'change@me'
   TEMP_EMAIL_REGEX = /\Achange@me/
 
@@ -22,7 +24,6 @@ class User < ApplicationRecord
 
   def self.find_for_oauth(auth, signed_in_resource = nil)
 
-    # Получить identity пользователя, если он уже существует
     identity = Identity.find_for_oauth(auth)
 
     user = signed_in_resource ? signed_in_resource : identity.user
@@ -32,7 +33,6 @@ class User < ApplicationRecord
       email = auth.info.email #if email_is_verified
       user = User.where(:email => email).first if email
 
-      # Создать пользователя, если это новая запись
       if user.nil?        
         if auth.provider == "facebook"
           first_name, last_name = auth.info.name.split(" ")
@@ -53,7 +53,6 @@ class User < ApplicationRecord
       end
     end
 
-    # Связать identity с пользователем, если необходимо
     if identity.user != user
       identity.user = user
       identity.save!
@@ -68,4 +67,12 @@ class User < ApplicationRecord
   def title
     self.email
   end
+
+  private
+
+    def setup_default_role_for_new_users
+      if self.role.blank?
+        self.role = "user"
+      end
+    end
 end

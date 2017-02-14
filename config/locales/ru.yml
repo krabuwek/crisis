@@ -2,7 +2,7 @@ ru:
   activerecord:
     models: 
       article: 
-        one: "Статья"
+        one: "Статью"
         other: "Статьи"
       comment:
         one: "Комментарий"

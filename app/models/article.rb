@@ -2,7 +2,7 @@ class Article < ApplicationRecord
   attr_accessor :tag_list
 
   validates :content, presence: true, length: { minimum: 1 }
-  validates :title,   presence: true, length: { maximum: 70 }
+  validates :title,   presence: true
   validates :illustration, presence: true
 
   scope :published, -> { where(published: true) }
@@ -19,7 +19,7 @@ class Article < ApplicationRecord
   mount_uploader :illustration, IllustrationUploader
   
   def published?
-    self.published
+    self.published 
   end
 
   def update_comments_counter

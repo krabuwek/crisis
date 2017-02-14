@@ -23,29 +23,30 @@
       dt
         | Телефон:
       dd
-        = @user.phone.nil? ? "не указан" : @user.phone
+        = @user.phone == "" ? "не указан" : @user.phone
       dt
         | Место работы
       dd
-        = @user.company.nil? ? "не указано" :  @user.company
+        = @user.company == "" ? "не указано" :  @user.company
       dt
         | Должность
       dd
-        = @user.position.nil? ? "не указана" : @user.position
+        = @user.position == "" ? "не указана" : @user.position
       dt
         | Бизнес достижения
       dd
-        = @user.business_achievements.nil? ? "пусто" : @user.business_achievements
-.edit-user-plz
-  .row
-    = link_to edit_user_path(@user), class: 'btn btn-primary' do 
-      span.glyphicon.glyphicon-pencil
-      |  Редактировать
-  .row
-    = link_to new_article_path,  class: 'btn btn-primary' do 
-      span.glyphicon
-      |  Добавить новость
-  .row
-    = link_to articles_path(my_article: true),  class: 'btn btn-primary' do
-      span.glyphicon
-      |  Просмотр предложенных новостей 
+        = @user.business_achievements == "" ? "пусто" : @user.business_achievements
+- if current_user.id == @user.id
+  .edit-user-plz
+    .row
+      = link_to edit_user_path(@user), class: 'btn btn-primary' do 
+        span.glyphicon.glyphicon-pencil
+        |  Редактировать
+    .row
+      = link_to new_article_path,  class: 'btn btn-primary' do 
+        span.glyphicon
+        |  Добавить новость
+    .row
+      = link_to articles_path(my_article: true),  class: 'btn btn-primary' do
+        span.glyphicon
+        |  Просмотр предложенных новостей 

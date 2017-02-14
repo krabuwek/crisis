@@ -6,14 +6,14 @@
       ul
         - @article.errors.full_messages.each do |message|
           li = message
-  = f.input :title
-  = f.input :content, input_html: { class: "tinymce" }
+  = f.input :title, label: "Название"
+  = f.input :content, label: "Текст" , input_html: { class: "tinymce" }
   = tinymce 
-  = f.input :tag_list
-  = f.input :published
+  = f.input :tag_list, label: "Список тегов(введите через пробел)"
+  /= f.input :published, label: "Опубликовать" if can? :make_publication, current_user
 
   .form-group
     = f.file_field :illustration
   .form-group
-    = f.submit class: "btn btn-primary"
+    = f.submit "Предложить новость", class: "btn btn-primary"
 

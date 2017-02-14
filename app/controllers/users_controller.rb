@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy, :finish_signup]
-
+  before_action :authenticate_user!, :except => :show
+  load_and_authorize_resource
   # GET /users
   # GET /users.json
   def index

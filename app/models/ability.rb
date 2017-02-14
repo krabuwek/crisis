@@ -29,35 +29,43 @@ class Ability
     # See the wiki for details:
     # https://github.com/ryanb/cancan/wiki/Defining-Abilities
     can :read, Comment
-    can :read, Article do |article|
-      article.published?
-    end
+    can :read, Article
+    # can :read, Article do |article|
+    #   article.published?
+    # end
+    # can :show, Article, Article.where(published: true) do
+    #   article.published?
+    # end 
+    #can :read, Article
+
+    can [:read, :create], User
 
 
     user ||= User.new
 
     unless user.new_record?
-      can :create, Comment, article: {:published? => true}
-      can :destroy, Comment, user: user
-      can :all, User, user: user
-
-      can :create, Mark do |mark|
-        mark.article.user != user
-      end
-      
-      can :create, Article do |article|
-        not article.published?
-      end
-
-      cannot :make_publication
-      can [:edit, :destroy, :show, :update], Article, user: user, published: false
-      cannot :published, Article
-
-      can :create, Response do |response|
-        response.comment
-      end
-
       case user.role
+        when 'user'    
+          can :create, Comment, article: {:published? => true}
+          can :destroy, Comment, user: user
+          can :manage, User, id: user.id
+          can :create, Mark do |mark|
+            mark.article.user != user
+          end
+          
+          can :create, Article do |article|
+            not article.published?
+          end
+
+          cannot :make_publication
+          can [:edit, :destroy, :show, :update], Article, user: user, published: false
+          cannot :published, Article
+
+          can :create, Response do |response|
+            response.comment
+          end
+
+      
         when 'moderator'
           can :make_publication
           can :manage, Article, published: false
