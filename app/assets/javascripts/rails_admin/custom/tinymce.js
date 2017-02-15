@@ -1,6 +1,6 @@
 function tinymce_load(){
   tinymce.init({
-    selector: "textarea",
+    selector: "#new_article textarea, #edit_article textarea",
     plugins: [
      "advlist autolink lists link image charmap print preview anchor",
      "searchreplace visualblocks code fullscreen autoresize",
