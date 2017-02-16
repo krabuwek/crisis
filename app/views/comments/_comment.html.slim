@@ -30,8 +30,10 @@
 			.col-md-3.col-sm-6.col-xs-6
 				= link_to user_path comment.user do
 					= first_and_last_name comment.user
+					
 			.col-md-9.col-sm-6.col-xs-6
 				= created_at_article comment
+				= image_level comment.user
 		.row
 			.col-md-12.col-sm-12.col-xs-12
 				= comment.content

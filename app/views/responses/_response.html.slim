@@ -5,13 +5,14 @@
 				= image_tag "Crisis_club_icon_profile.png", style: "border:none"
 			- else 
 				= image_tag response.user.avatar.for_message.url
-	.col-md-7.col-sm-6.col-xs-6
+	.col-md-8.col-sm-6.col-xs-6
 		.row
 			.col-md-3.col-sm-6.col-xs-12
 				= link_to user_path response.user do
 					= first_and_last_name response.user
 			.col-md-9.col-sm-6.col-xs-12
 				= created_at_article response
+				= image_level response.user
 		.row
 			.col-md-12.col-sm-12.col-xs-12
 				= response.content

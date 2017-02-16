@@ -11,3 +11,16 @@
     color: white;
   }
 }
+.container {
+  .rating-image {
+    border:none;
+    float: right;
+    width: 14px !important;
+  }
+  .user-rating {
+    .rating-image {
+      float: none;
+      margin-left: 5px;
+    }
+  }
+}

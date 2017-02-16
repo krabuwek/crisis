@@ -22,8 +22,9 @@
         = @user.last_name
       dt
         | Рейтинг
-      dd
+      dd.user-rating
         = @user.rating
+        = image_level @user
       dt
         | Телефон:
       dd

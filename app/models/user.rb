@@ -78,6 +78,20 @@ class User < ApplicationRecord
     self.save
   end
 
+  def get_level
+    case self.rating
+      when 0 .. 50 then 0
+      when 51 .. 200 then 1
+      when 201 .. 500 then 2
+      when 501 .. 1000 then 3
+      when 1001 .. 3000 then 4
+      else
+        5 
+    end    
+  end
+
+
+
   private
 
     def setup_default_role_for_new_users
@@ -85,4 +99,6 @@ class User < ApplicationRecord
         self.role = "user"
       end
     end
+
+
 end
