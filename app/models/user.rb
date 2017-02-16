@@ -68,6 +68,16 @@ class User < ApplicationRecord
     self.email
   end
 
+  def add_rating val
+    self.rating += val
+    self.save
+  end
+
+  def remove_rating val
+    self.rating -= val
+    self.save
+  end
+
   private
 
     def setup_default_role_for_new_users

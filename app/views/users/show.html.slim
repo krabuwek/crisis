@@ -21,6 +21,10 @@
       dd
         = @user.last_name
       dt
+        | Рейтинг
+      dd
+        = @user.rating
+      dt
         | Телефон:
       dd
         = @user.phone == "" ? "не указан" : @user.phone

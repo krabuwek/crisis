@@ -1,6 +1,8 @@
 class Article < ApplicationRecord
   attr_accessor :tag_list
 
+  VALUE_RATING = 20
+
   validates :content, presence: true, length: { minimum: 1 }
   validates :title,   presence: true
   validates :illustration, presence: true
@@ -16,11 +18,22 @@ class Article < ApplicationRecord
   has_many :marks
   has_and_belongs_to_many :tags
 
+  after_save :add_rating
+  after_destroy :remove_rating
+
   mount_uploader :illustration, IllustrationUploader
   
   def published?
     self.published 
   end
+
+  [:add, :remove].each do |action|
+    class_eval %Q{
+      def #{action}_rating
+        self.user.#{action}_rating VALUE_RATING if self.published?
+      end
+    }
+  end 
 
   def update_comments_counter
     update_attribute(:comments_count, comments_count)
