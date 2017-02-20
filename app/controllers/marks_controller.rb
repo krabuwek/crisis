@@ -6,10 +6,16 @@ class MarksController < ApplicationController
     @mark = Mark.where(article_id: article.id, user_id: current_user.id).first || article.marks.new(user_id: current_user.id)
     if @mark.new_record?    
       @mark.save
-      redirect_to article
+      respond_to do |format|
+        format.js {}
+      end
+      #redirect_to article
     else 
       @mark.destroy
-      redirect_to article
+      respond_to do |format|
+        format.js {}
+      end
+      #redirect_to article
     end
   end
 end

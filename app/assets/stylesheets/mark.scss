@@ -1,3 +1,11 @@
 // Place all the styles related to the mark controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.marks {
+  .grey {
+    color: #777;
+    .icon {
+      background-image:image-url("Crisis_club_icon_like_disable.png")
+    }
+  }
+}
