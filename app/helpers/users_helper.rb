@@ -4,7 +4,7 @@ module UsersHelper
   end
 
   def image_level user
-    image_tag "level_#{user.get_level}", class: "rating-image"
+    image_tag "level_#{user.get_level}.png", class: "rating-image"
   end
 
 end
