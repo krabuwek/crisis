@@ -46,6 +46,9 @@ RailsAdmin.config do |config|
     configure :content do
       label "Текст"
     end
+    configure :description do
+      label "Описание"
+    end
     configure :published do
       label "Опубликована"
     end

@@ -7,6 +7,7 @@
         - @article.errors.full_messages.each do |message|
           li = message
   = f.input :title, label: "Название"
+  = f.input :description, label: "Описание"
   = f.input :content, label: "Текст" , input_html: { class: "tinymce" }
   = tinymce 
   = f.input :tag_list, label: "Список тегов(введите через пробел)"

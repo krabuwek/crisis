@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170215131047) do
+ActiveRecord::Schema.define(version: 20170223082457) do
 
   create_table "articles", force: :cascade do |t|
     t.string   "title"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20170215131047) do
     t.integer  "marks_count",    default: 0
     t.integer  "comments_count", default: 0
     t.string   "illustration"
+    t.string   "description",    default: "",    null: false
     t.index ["user_id"], name: "index_articles_on_user_id"
   end
 

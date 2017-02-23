@@ -5,11 +5,11 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-    20.times do 
-      article = Article.new({title: "Иногда что-то там кот",
-        published:true,
-        content: "Иногда что-то там кот Иногда что-то там кот Иногда что-то там кот",
-        user_id: 1,
-        illustration:"Crisis_club_news_photo-5.jpg"})
-      article.save
-    end
+20.times do 
+  article = Article.new({title: "Иногда что-то там кот",
+    published:true,
+    content: "Иногда что-то там кот Иногда что-то там кот Иногда что-то там кот",
+    user_id: 1,
+    illustration:"Crisis_club_news_photo-5.jpg"})
+  article.save
+end

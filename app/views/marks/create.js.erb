@@ -1,1 +1,8 @@
-$(".marks .like").toggleClass("grey");
+$(".marks .like").toggleClass("grey").promise().done(function(){
+    if($(this).attr("class") === "like grey") {
+    	$(".footer-article .count-like").html("(" + (Number($(".footer-article .count-like").html().replace(/\(|\)/g, "")) + 1) + ")")
+    } else {
+   		$(".footer-article .count-like").html("(" + (Number($(".footer-article .count-like").html().replace(/\(|\)/g, "")) - 1) + ")") 	
+    }
+})
+	

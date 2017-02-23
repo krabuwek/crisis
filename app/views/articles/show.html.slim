@@ -1,5 +1,5 @@
 /p#notice = notice
-- meta title: @article.title, og: { image: base_url + @article.illustration.url, title: @article.title,	url: current_url }
+- meta title: @article.title, og: { image: base_url + @article.illustration.url, title: @article.title, description: @article.description,	url: current_url }
 .container
 	.row
 		.col-md-8.col-xs-12.col-sm-12
@@ -19,6 +19,8 @@
 							.like class=" #{@liked}"
 								.icon
 								span Мне нравится
+					span.count-like 
+						= "(#{@article.marks_count})"
 					= render partial: "shared_buttons"	
 				.tags
 					|Теги: 

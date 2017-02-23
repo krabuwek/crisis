@@ -6,6 +6,7 @@ class Article < ApplicationRecord
   validates :content, presence: true, length: { minimum: 1 }
   validates :title,   presence: true
   validates :illustration, presence: true
+  validates :description, presence: true
 
   scope :published, -> { where(published: true) }
   scope :not_published, -> { where(published: false) }
@@ -58,6 +59,7 @@ class Article < ApplicationRecord
   rails_admin do 
     edit do   
       field :title
+      field :description
       field :content
       field :illustration
       field :published
