@@ -10,7 +10,7 @@
 					.shared-top
 						= render partial:"shared_buttons"
 				= image_tag(@article.illustration.url, class: "img-responsive") unless @article.illustration.file.nil?
-				h1.hidden-md = @article.title
+				h1.hidden-md.hidden-lg = @article.title
 				.content
 					= @article.content.html_safe
 				.footer-article
