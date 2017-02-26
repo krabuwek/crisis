@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     resources :marks, only: :create
   end
 
-  resources :users
+  resources :users, except: :index
 
   post 'comment/:id/response' => "responses#create", as: :comment_responses
   get 'comment/:id/response' => "responses#new", as: :new_comment_responses

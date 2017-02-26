@@ -13,7 +13,11 @@ function tinymce_load(){
   });
 }
 $(window).load(function() {
+
+})
+$(document).on('pjax:complete', tinymce_load );
+
+document.addEventListener("DOMContentLoaded", function() {
   tinymce_load();
   $("#new_article").attr("novalidate", "true")
 })
-$(document).on('pjax:complete', tinymce_load );

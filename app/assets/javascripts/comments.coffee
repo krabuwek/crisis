@@ -1,4 +1,4 @@
-document.addEventListener("turbolinks:load", -> 
+document.addEventListener("DOMContentLoaded", -> 
   $("#new_comment").on("ajax:success", (e, data, status, xhr) ->
     $("#comment_content").val("")
   )

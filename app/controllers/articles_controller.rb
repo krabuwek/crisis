@@ -26,7 +26,7 @@ class ArticlesController < ApplicationController
   # GET /articles/1.json
   def show
     @articles = Article.published.where.not(id: @article.id).limit(5)
-    @liked = (@article.marks.exists?(user_id: current_user.id)) ? "grey" : ""
+    @liked = (!current_user.nil? && @article.marks.exists?(user_id: current_user.id)) ? "grey" : ""
   end
 
   # GET /articles/new

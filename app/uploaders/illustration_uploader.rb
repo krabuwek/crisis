@@ -21,6 +21,10 @@ class IllustrationUploader < CarrierWave::Uploader::Base
     process resize_to_fill: [354,198]
   end
 
+  version :for_shared do 
+    process resize_to_fill: [300, 200]
+  end
+
   # Provide a default URL as a default if there hasn't been a file uploaded:
   # def default_url
   #   # For Rails 3.1+ asset pipeline compatibility:

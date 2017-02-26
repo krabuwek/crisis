@@ -1,4 +1,4 @@
-document.addEventListener("turbolinks:load", ->
+document.addEventListener("DOMContentLoaded", ->
   $("#article_form").submit -> 
     form = $(this)
     tag_list = form.find("#article_tag_list").val().split(/\ +/)

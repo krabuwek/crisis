@@ -42,11 +42,11 @@ class Ability
       
         when 'moderator'
           can :make_publication
-          can :manage, Article, published: false
-          can :published, Article
+          can :manage, Article
           can :manage, Response
           can :manage, Comment
-          cannot [:create, :update, :destroy], Article, published: true
+          can :access, :rails_admin     
+          can :dashboard  
         when 'admin'
           can :manage, :all
           can :access, :rails_admin     

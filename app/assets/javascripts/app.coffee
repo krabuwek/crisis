@@ -1,4 +1,4 @@
-document.addEventListener("turbolinks:load", ->
+document.addEventListener("DOMContentLoaded", ->
   $tags = $("#tags")
   $nextPageTags = $("#nextPageTags")
   $prevPageTags = $("#prevPageTags")
