@@ -46,9 +46,10 @@ class ArticlesController < ApplicationController
     @article = Article.new(article_params)
     @article.user_id = current_user.id
     authorize! :create, @article
+    binding.pry
     respond_to do |format|
       if @article.save
-        @article.tags << find_or_create_tags(params[:tags].map{|k, v| v}) unless params[:tags].empty? || params[:tags][0].nil?
+        @article.tags << find_or_create_tags(params[:tags].map{|k, v| v}) unless params[:tags].empty? || params[:tags]["0"].empty?
         format.html { redirect_to @article, notice: 'Article was successfully created.' }
         format.json { render :show, status: :created, location: @article }
       else

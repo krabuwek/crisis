@@ -12,12 +12,7 @@ function tinymce_load(){
     toolbar: "undo redo | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link"
   });
 }
-$(window).load(function() {
-
-})
-$(document).on('pjax:complete', tinymce_load );
-
-document.addEventListener("DOMContentLoaded", function() {
+$(document).on('pjax:complete', function() {
+  $("#new_article").attr("novalidate", "true");
   tinymce_load();
-  $("#new_article").attr("novalidate", "true")
 })
