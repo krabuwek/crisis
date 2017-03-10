@@ -21,7 +21,7 @@ class Ability
       case user.role
         when 'user'    
           can :create, Comment, article: {:published? => true}
-          can :destroy, Comment, user: user
+          can [:destroy, :edit, :update], Comment, user_id: user.id
           can :manage, User, id: user.id
           can :create, Mark do |mark|
             mark.article.user != user
@@ -38,6 +38,7 @@ class Ability
           can :create, Response do |response|
             response.comment
           end
+          can [:destroy, :edit, :update], Response, user_id: user.id
 
       
         when 'moderator'

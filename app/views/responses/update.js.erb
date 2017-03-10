@@ -1,0 +1,3 @@
+$("#response_<%= @response.id %> .response-content").html("<%= @response.content.strip %>")
+.promise($("#response_<%= @response.id %> .body-response").fadeIn('fast'))
+$(".form-update-response").remove()

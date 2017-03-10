@@ -38,12 +38,16 @@ html
                     .col-md-12.col-sm-12.col-xs-12.name
                       = first_and_last_name current_user
                   .row.settings
-                    .col-md-10.col-sm-10.col-xs-8
-                      = link_to "Настройки", user_path(current_user)
-                    .col-md-2.col-sm-2.col-xs-4   
+                    / .col-md-10.col-sm-10.col-xs-8
+                    /   = link_to "Настройки", user_path(current_user)
+                    .col-md-2.col-sm-2.col-xs-4.col-md-offset-10.col-sm-offset-10.col-xs-offset-8   
                       = link_to "Выйти", destroy_user_session_path, method: :delete
                 .col-md-2.col-sm-4.col-xs-4.text-left
-                  = image_tag("Crisis_club_icon_profile.png")
+                  = link_to user_path(current_user) do
+                    - if current_user.avatar.thumb.url.nil?
+                      = image_tag("Crisis_club_icon_profile.png")
+                    - else
+                      = image_tag(current_user.avatar.thumb.url, class: "img-circle")
       - else
         .container
           .row.auth-true.login-form
@@ -141,9 +145,8 @@ html
                 = image_tag("Crisis_club_footer_logo.png")
           .col-md-4.col-sm-12.col-xs-12.my-col.text-center
             .info
-              = link_to "About", root_path
-              = link_to "Privacy", root_path
-              = link_to "Contact Us", root_path 
+              = link_to "О нас", about_path
+              = link_to "Контакты", root_path
           .col-md-4.col-sm-12.col-xs-12.my-col.text-center
             .copyright
               |Copyright © 2017 Crisis.Club

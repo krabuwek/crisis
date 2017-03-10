@@ -2,7 +2,7 @@ var like = $(".marks .like")
 
 console.log(like.attr("class").search('grey') != -1)
 
-if(like.attr("class").search('grey') != -1) {
+if(like.attr("class").search('grey') == -1) {
 	$(".footer-article .count-like").html("(" + (Number($(".footer-article .count-like").html().replace(/\(|\)/g, "")) - 1) + ")")
 } else {
 	$(".footer-article .count-like").html("(" + (Number($(".footer-article .count-like").html().replace(/\(|\)/g, "")) + 1) + ")") 	

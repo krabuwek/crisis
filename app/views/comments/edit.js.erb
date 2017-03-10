@@ -1,0 +1,3 @@
+$(".comments #<%= @comment.id %> .body-comment").fadeOut('fast',function() {
+	$(".comments #<%= @comment.id %>").append("<%= escape_javascript(render partial: 'form_update') %>")
+})

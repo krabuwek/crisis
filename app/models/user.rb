@@ -90,6 +90,25 @@ class User < ApplicationRecord
     end    
   end
 
+  rails_admin do
+    edit do
+      field :email 
+      field :first_name do
+        label "Имя"
+      end
+      field :last_name do 
+        label "Фамилия"
+      end
+      field :role do 
+        label "Роль"
+      end
+      field :rating do
+        label "Рейтинг"
+      end
+
+    end
+  end
+
 
 
   private

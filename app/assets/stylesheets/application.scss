@@ -204,9 +204,6 @@ body {
     }
     .info-user {
       .settings {
-        .col-md-2 {
-          border-left: 1px solid #fff
-        }
         a {
           color: #8091d5;
         }
@@ -322,11 +319,7 @@ body {
   font-size: 13px;
   margin-top: 30px;
   @include respond-to(md) {
-    .row {
-      position: relative;
-      top: 30px;
-      height: 82px;
-    }
+    padding: 20px 0 20px 0;
   }
 
   

@@ -181,7 +181,22 @@ body {
   margin-bottom: 30px;
 }
 .go-top {
-  display: inline;
+  position: fixed;
+  opacity: 0.5;
+  @include respond-to(md) {
+    top: 76%;
+    right: 10%
+  }
+  @include respond-to(xs) {
+    top: 70%;
+    right: 5%
+  }
+
+  @include respond-to(sm) {
+    top: 7%;
+    right: 10%;
+  }
+   
   a {
     height: 38px;
     width: 38px;
@@ -192,3 +207,28 @@ body {
     float: right;
   }
 }
+.go-top:hover {
+  opacity: 1;
+}
+.response-toolbar, .comment-toolbar {
+  @include respond-to(md) {
+    a {
+    padding-left: 5px;
+    }
+    a:first-child {
+      padding-left: 0px;
+    }
+  }
+}
+// .go-top {
+//   display: inline;
+  // a {
+  //   height: 38px;
+  //   width: 38px;
+  //   display: block;
+  //   background-image: image-url("Crisis_club_go_top.png");
+  //   background-size:38px 38px;
+  //   background-repeat: no-repeat;
+  //   float: right;
+  // }
+// }

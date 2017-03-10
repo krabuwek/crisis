@@ -1,18 +1,23 @@
-.row.response
-	.col-md-2.col-sm-3.col-xs-3.col-md-offset-2.col-sm-offset-3.col-xs-offset-3
-		= link_to user_path response.user do
-			- if response.user.avatar.url.nil?
-				= image_tag "Crisis_club_icon_profile.png", style: "border:none"
-			- else 
-				= image_tag response.user.avatar.for_message.url
-	.col-md-8.col-sm-6.col-xs-6
-		.row
-			.col-md-3.col-sm-6.col-xs-12
-				= link_to user_path response.user do
-					= first_and_last_name response.user
-			.col-md-9.col-sm-6.col-xs-12
-				= created_at_article response
-				= image_level response.user
-		.row
-			.col-md-12.col-sm-12.col-xs-12
-				= response.content
+.row.response id="response_#{response.id}"
+	.body-response
+		.col-md-2.col-sm-3.col-xs-3.col-md-offset-2.col-sm-offset-3.col-xs-offset-3
+			= link_to user_path response.user do
+				- if response.user.avatar.url.nil?
+					= image_tag "Crisis_club_icon_profile.png", style: "border:none"
+				- else 
+					= image_tag response.user.avatar.for_message.url
+		.col-md-8.col-sm-6.col-xs-6
+			.row
+				.col-md-4.col-sm-6.col-xs-12
+					= link_to user_path response.user do
+						= first_and_last_name response.user
+				.col-md-8.col-sm-6.col-xs-12
+					= created_at_article response
+					= image_level response.user
+			.row
+				.col-md-12.col-sm-12.col-xs-12.response-content
+					= response.content
+				.col-md-12.col-sm-12.col-xs-12.response-toolbar
+					= link_to "Удалить", article_comment_response_path(@article, response.comment, response), remote: true, method: :delete, data: { confirm: 'Вы действительно хотите удалить комментарий?' } if can? :destroy, response
+					br.hidden-md.hidden-lg 
+					= link_to "Редактировать", edit_article_comment_response_path(@article, response.comment, response), remote: true if can? :update, response

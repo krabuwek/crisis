@@ -1,0 +1,3 @@
+$(".comments #<%= @comment.id %> .comment-content").html("<%= @comment.content.strip %>")
+.promise($(".comments #<%= @comment.id %> .body-comment").fadeIn('fast'))
+$(".form_update").remove()

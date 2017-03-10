@@ -1,0 +1,7 @@
+  .col-md-12.col-sm-12.col-xs-12.form_update     
+    .content
+      .name-user
+        | Редактирование
+      = simple_form_for [@article, @comment], remote: true, html:{ "data-turbolinks" => false } do |f|
+        = f.input :content, label: false, input_html: { rows: '3'}
+        = f.button :submit, 'Отправить'

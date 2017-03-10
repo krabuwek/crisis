@@ -1,46 +1,30 @@
-/ .comment id="#{comment.id}"
-/ 	= link_to user_path comment.user do
-/ 		.avatar
-/ 			- if comment.user.avatar.url.nil?
-/ 				= image_tag "Crisis_club_icon_profile.png", style: "width:86px; height:86px; border:none"
-/ 			- else 
-/ 				= image_tag comment.user.avatar.for_message.url, style: "width:86px; height:86px;"
-/ 	.content
-/ 		.header-comment-content
-/ 			= link_to user_path comment.user do
-/ 				.name-user
-/ 					= first_and_last_name comment.user
-/ 			.datetime
-/ 				= created_at_article comment
-/ 		.body
-/ 			= comment.content
-/ 		= link_to "Ответить", new_comment_responses_path(comment), remote: true if can? :create, Comment
-/ 	.responses
-/ 		= render comment.responses unless comment.responses.empty?
-
 .row.comment id="#{comment.id}"
-	.col-md-2.col-sm-3.col-xs-3
-		= link_to user_path comment.user do
-			- if comment.user.avatar.url.nil?
-				= image_tag "Crisis_club_icon_profile.png", style: "border:none"
-			- else 
-				= image_tag comment.user.avatar.for_message.url
-	.col-md-10.col-sm-9.col-xs-9
-		.row
-			.col-md-3.col-sm-6.col-xs-6
-				= link_to user_path comment.user do
-					= first_and_last_name comment.user
-					
-			.col-md-9.col-sm-6.col-xs-6
-				= created_at_article comment
-				= image_level comment.user
-		.row
-			.col-md-12.col-sm-12.col-xs-12
-				= comment.content
-			.col-md-12.col-sm-12.col-xs-12
-				= link_to "Ответить", new_comment_responses_path(comment), remote: true if can? :create, Comment
-	.col-md-12.col-sm-12.col-xs-12.responses
-		= render comment.responses unless comment.responses.empty?
+	.body-comment
+		.col-md-2.col-sm-3.col-xs-3
+			= link_to user_path comment.user do
+				- if comment.user.avatar.url.nil?
+					= image_tag "Crisis_club_icon_profile.png", style: "border:none"
+				- else 
+					= image_tag comment.user.avatar.for_message.url
+		.col-md-10.col-sm-9.col-xs-9
+			.row
+				.col-md-3.col-sm-6.col-xs-6
+					= link_to user_path comment.user do
+						= first_and_last_name comment.user
+				.col-md-9.col-sm-6.col-xs-6
+					= created_at_article comment
+					= image_level comment.user
+			.row
+				.col-md-12.col-sm-12.col-xs-12.comment-content
+					= comment.content
+				.col-md-12.col-sm-12.col-xs-12.comment-toolbar
+					= link_to "Ответить", new_article_comment_response_path(@article, comment), remote: true if can? :create, Comment
+					br.hidden-md.hidden-lg
+					= link_to "Удалить", article_comment_path(@article, comment), remote: true, method: :delete, data: { confirm: 'Вы действительно хотите удалить комментарий?' } if can? :destroy, comment 
+					br.hidden-md.hidden-lg
+					= link_to "Редактировать", edit_article_comment_path(@article, comment), remote: true if can? :update, comment
+		.col-md-12.col-sm-12.col-xs-12.responses
+			= render comment.responses unless comment.responses.empty?
 
 
 

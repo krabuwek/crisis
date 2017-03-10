@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: [:edit, :update, :destroy]
-  before_action :set_article, only: [:create, :destroy]
+  before_action :set_article, only: [:create, :destroy, :edit, :update]
   load_and_authorize_resource except: :create
 
   # GET /comments
@@ -26,10 +26,23 @@ class CommentsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update 
+    if @comment.update(comment_params)
+      respond_to do |format|
+        format.js {}
+      end
+    end    
+  end
+
   def destroy
     #article = Article.find params[:article_id]
     @comment.destroy
-    redirect_to :back
+    respond_to do |format|
+      format.js {}
+    end
   end
 
   private

@@ -12,7 +12,7 @@ class ArticlesController < ApplicationController
         if current_user.articles.not_published.empty?
           @message = "Вы не предложили ни одной новости или их уже опубликовали"
         else
-          @articles = current_user.articles.not_published.page params[:pages]
+          @articles = current_user.articles.page params[:pages]
         end
       else  
         @articles = Article.published.page params[:page]
@@ -26,7 +26,7 @@ class ArticlesController < ApplicationController
   # GET /articles/1.json
   def show
     @articles = Article.published.where.not(id: @article.id).limit(5)
-    @liked = (!current_user.nil? && @article.marks.exists?(user_id: current_user.id)) ? "grey" : ""
+    @liked = (!current_user.nil? && @article.marks.exists?(user_id: current_user.id)) ? "" : "grey" 
   end
 
   # GET /articles/new

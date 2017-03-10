@@ -138,6 +138,9 @@ RailsAdmin.config do |config|
       field :role do 
         label "Роль"
       end
+      field :rating do 
+        label "Рейтинг"
+      end
     end
     configure :role do
       label "Роль"

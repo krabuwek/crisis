@@ -9,13 +9,11 @@ class MarksController < ApplicationController
       respond_to do |format|
         format.js {}
       end
-      #redirect_to article
     else 
       @mark.destroy
       respond_to do |format|
         format.js {}
       end
-      #redirect_to article
     end
   end
 end

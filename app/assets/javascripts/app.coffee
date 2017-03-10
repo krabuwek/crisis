@@ -23,8 +23,26 @@ document.addEventListener("DOMContentLoaded", ->
     if $tags[0].scrollWidth - $tags[0].clientWidth >= currentScroll
       $nextPageTags.show()
 
-  $(".go-top").click ->
-    $("html body").animate({ scrollTop: 0 },  400)
+  # $(".go-top").click ->
+  #   $("html body").animate({ scrollTop: 0 },  400)
 
-) 
-#$("html, body").animate({ scrollTop: 0 }, 600);
+  top_show = 200
+  delay = 400
+
+  $('.go-top').click ->
+      $('body, html').animate({
+        scrollTop: 0
+      }, delay);
+
+  
+  $(window).scroll ->
+    windowScrollTop = $(window).scrollTop()
+    windowHeight = $(window).outerHeight()
+
+    console.log($(this).scrollTop() > top_show)
+
+    if windowScrollTop > windowHeight
+      $('.go-top').fadeIn();
+    else 
+      $('.go-top').fadeOut();
+);
