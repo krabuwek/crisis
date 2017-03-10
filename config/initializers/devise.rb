@@ -274,7 +274,7 @@ Devise.setup do |config|
   Devise.setup do |config|
     #config.omniauth :facebook, "644481139092321", "277b5e5e551ca21980ea0024fdcdccfe"
     #config.omniauth :vkontakte, "5778288", "GAepQCbdEGBYySpWCfba"
-    config.omniauth :vkontakte, "5797896", "evwCscRJNfMMl8nwEQpq"
+    config.omniauth :vkontakte, "5903327", "JFjx8op0kiZ65k7BrLWN"
     config.omniauth :facebook, "1399868356724121", "af1d5f188b63d53f788ff93f41ee02d2"
 
   end
