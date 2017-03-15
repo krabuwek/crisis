@@ -6,12 +6,12 @@ class Comment < ApplicationRecord
   belongs_to :user
   has_many :responses
 
-  after_save :update_counter_inc, :add_rating
+  after_create :update_counter_inc, :add_rating
   after_destroy :update_counter_dec, :remove_rating
 
   private
     def update_counter_inc
-      self.article.comment_inc
+      self.article.comment_inc 
     end
 
     def update_counter_dec
