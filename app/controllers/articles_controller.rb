@@ -46,10 +46,10 @@ class ArticlesController < ApplicationController
     @article = Article.new(article_params)
     @article.user_id = current_user.id
     authorize! :create, @article
-    binding.pry
     respond_to do |format|
       if @article.save
-        @article.tags << find_or_create_tags(params[:tags].map{|k, v| v}) unless params[:tags].empty? || params[:tags]["0"].empty?
+        tag_array = find_or_create_tags(params[:tags].map{|k, v| v}) unless params[:tags].empty? || params[:tags]["0"].empty?
+        @article.tags << tag_array.compact unless tag_array.nil?
         format.html { redirect_to @article, notice: 'Article was successfully created.' }
         format.json { render :show, status: :created, location: @article }
       else
@@ -98,7 +98,7 @@ class ArticlesController < ApplicationController
 
     def find_or_create_tags tags
       tags.map do |value|
-        Tag.find_or_create_by(tag: value)
+        Tag.find_or_create_by(tag: value) unless value.empty?
       end
     end
 

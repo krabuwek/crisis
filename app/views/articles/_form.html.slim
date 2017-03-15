@@ -9,7 +9,7 @@
   = f.input :title, label: "Название"
   = f.input :description, label: "Описание"
   = f.input :content, label: "Текст" , input_html: { class: "tinymce" }
-  = tinymce 
+  = tinymce plugins: "media code"
   = f.input :tag_list, label: "Список тегов(введите через пробел)"
   = f.input :published, label: "Опубликовать" if cannot? :make_publication, current_user
 

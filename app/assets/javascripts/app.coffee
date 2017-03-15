@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", ->
 
     console.log($(this).scrollTop() > top_show)
 
-    if windowScrollTop > windowHeight
+    if windowScrollTop > top_show
       $('.go-top').fadeIn();
     else 
       $('.go-top').fadeOut();
