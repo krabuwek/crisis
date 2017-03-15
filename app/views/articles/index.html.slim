@@ -6,7 +6,7 @@
         = render partial: "articles"
     .add-articles-index.text-center.row
         = link_to_next_page @articles, "<div id='add-articles-index'>Показать ещё</div>".html_safe, remote: true
-        .go-top
+        .go-top style="display:none"
             a href="#"
 
 

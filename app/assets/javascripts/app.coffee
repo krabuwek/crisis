@@ -32,17 +32,19 @@ document.addEventListener("DOMContentLoaded", ->
   $('.go-top').click ->
       $('body, html').animate({
         scrollTop: 0
-      }, delay);
+      }, 500);
+      return false
 
   
   $(window).scroll ->
     windowScrollTop = $(window).scrollTop()
     windowHeight = $(window).outerHeight()
 
-    console.log($(this).scrollTop() > top_show)
+    #console.log($(this).scrollTop() > top_show)
 
     if windowScrollTop > top_show
       $('.go-top').fadeIn();
+      console.log("fade in")
     else 
       $('.go-top').fadeOut();
 );
