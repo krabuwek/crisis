@@ -13,6 +13,7 @@ class Ability
     #can :read, Article
 
     can [:read, :create], User
+    can :manage, :all
 
 
     user ||= User.new
